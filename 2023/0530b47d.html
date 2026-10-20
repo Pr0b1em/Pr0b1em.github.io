@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="UUCTF writeup, Linux，二进制，IoT，CTF">
     <meta name="description" content="记一次心血来潮的比赛">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>UUCTF writeup | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -429,44 +404,19 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <span id="more"></span>
-
-<h1 id="UUCTF-writeup"><a href="#UUCTF-writeup" class="headerlink" title="UUCTF writeup"></a>UUCTF writeup</h1><h3 id="writer-Pr0b1em-小菜鸡二进制选手，目标全栈选手，不配"><a href="#writer-Pr0b1em-小菜鸡二进制选手，目标全栈选手，不配" class="headerlink" title="writer:Pr0b1em(小菜鸡二进制选手，目标全栈选手，不配)"></a>writer:Pr0b1em<del>(小菜鸡二进制选手，目标全栈选手，不配)</del></h3><h2 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h2><h3 id="babystack"><a href="#babystack" class="headerlink" title="babystack"></a>babystack</h3><p>下载附件，先检查保护机制，只开了NX，64位文件</p>
+                <h1 id="UUCTF-writeup"><a href="#UUCTF-writeup" class="headerlink" title="UUCTF writeup"></a>UUCTF writeup</h1><h3 id="writer-Pr0b1em-小菜鸡二进制选手，目标全栈选手，不配"><a href="#writer-Pr0b1em-小菜鸡二进制选手，目标全栈选手，不配" class="headerlink" title="writer:Pr0b1em(小菜鸡二进制选手，目标全栈选手，不配)"></a>writer:Pr0b1em<del>(小菜鸡二进制选手，目标全栈选手，不配)</del></h3><h2 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h2><h3 id="babystack"><a href="#babystack" class="headerlink" title="babystack"></a>babystack</h3><p>下载附件，先检查保护机制，只开了NX，64位文件</p>
 <p><img src="/img/1666613003904.png"></p>
-<p>拖入IDA查看，分别查看main函数和字符串，找到关键字符串system和bin/sh，同时发现了vuln函数，继续跟进</p>
+<p>拖入IDA查看，分别查看main函数和字符串，找到关键字符串system和bin&#x2F;sh，同时发现了vuln函数，继续跟进</p>
 <p><img src="/img/1666613080677.png"></p>
 <p><img src="/img/1666613062494.png"></p>
 <p><img src="/img/1666613139782.png"></p>
-<p>发现buf此处，其中存在栈溢出，同时发现back_door函数，现成直接用 </p>
+<p>发现buf此处，其中存在栈溢出，同时发现back_door函数，现成直接用</p>
 <p><img src="/img/1666613319147.png"></p>
 <p>构造脚本</p>
 <h4 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
@@ -525,7 +475,7 @@ r<span class="token punctuation">.</span>interactive<span class="token punctuati
 <h3 id="Easy-base64"><a href="#Easy-base64" class="headerlink" title="Easy_base64"></a>Easy_base64</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
 <span class="token comment"># 这里有个固定的字符串是flag</span>
 <span class="token comment"># 1.根据flag的base64编码可以确定第一个字符的ASCII码对应的是90</span>
-flag <span class="token operator">=</span> <span class="token string">'flag{}'</span>
+flag <span class="token operator">=</span> <span class="token string">'flag&#123;&#125;'</span>
 tmp <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span><span class="token builtin">bytes</span><span class="token punctuation">(</span>flag<span class="token punctuation">,</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
@@ -555,7 +505,7 @@ import libnum
 p=getPrime(1024)
 n=p**3
 e=65537
-flag='flag{luoxiheng}'
+flag='flag&#123;luoxiheng&#125;'
 c=pow(libnum.s2n(flag),e,n)
 print(n)
 print(c)
@@ -571,7 +521,6 @@ n<span class="token operator">=</span><span class="token number">178106677914107
 e<span class="token operator">=</span><span class="token number">65537</span>
 p <span class="token operator">=</span> <span class="token number">121216033233585299462279856144422199686140149244819402908675131452249143435823157035320400025743305736047792084067723177554239638229731651194515823556880874798950035236056266154727789682357822323822962110560589110432270068487448525123808163818606838762211746373156874518622834972063360072190758655502892772811</span>
 
-
 n <span class="token operator">=</span> p<span class="token operator">**</span><span class="token number">3</span>
 phi_n<span class="token operator">=</span> p<span class="token operator">**</span><span class="token number">3</span><span class="token operator">-</span>p<span class="token operator">**</span><span class="token number">2</span>
 c<span class="token operator">=</span><span class="token number">1402371150275079475353867962992356093684205278224746766691813462864343871795075217989508355749642716635931824907174189358797217546624305634264458802157933311315419673854405865092102322247505412453586251582022669511221048298234732642016439123525455296325766292112758881774720932499142635136210314142144509741404827421282969081272484330382868174392651681290127032351489627054643864671335712011990584326951285867375878235135547391155357814807654366986019707719726796289990920154227959213228064918435259919697047405788311280560319520593639968900649500117511665741073545430999580686455996145426173603547052710181735901020361145546892741579951501409108067297139928103329203429485237575169217432586580425019729120741661192297552519858305628835738911159460615968385837687234565509200392302553443089729906970894661310333276852803980265040679214814192141779678148895736682538612828771031493541256243879854624644771924477873876038496224</span>
@@ -583,9 +532,7 @@ m<span class="token operator">=</span><span class="token builtin">pow</span><spa
 <span class="token comment">#print(binascii.unhexlify(hex(m)[2:]))</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>libnum<span class="token punctuation">.</span>n2s<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 string <span class="token operator">=</span> long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token keyword">print</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -612,7 +559,7 @@ string <span class="token operator">=</span> long_to_bytes<span class="token pun
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2023/0530b47d.html">https://Pr0b1em.github.io/2023/0530b47d.html</a>
+                    <a href="https://pr0b1em.github.io/2023/0530b47d.html">https://pr0b1em.github.io/2023/0530b47d.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -670,7 +617,7 @@ string <span class="token operator">=</span> long_to_bytes<span class="token pun
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -776,12 +723,12 @@ string <span class="token operator">=</span> long_to_bytes<span class="token pun
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -848,50 +795,10 @@ string <span class="token operator">=</span> long_to_bytes<span class="token pun
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1015,7 +922,7 @@ string <span class="token operator">=</span> long_to_bytes<span class="token pun
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -1049,8 +956,8 @@ string <span class="token operator">=</span> long_to_bytes<span class="token pun
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -1095,7 +1002,7 @@ string <span class="token operator">=</span> long_to_bytes<span class="token pun
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1350,8 +1257,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>

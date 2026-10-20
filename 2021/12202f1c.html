@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="canary, Linux，二进制，IoT，CTF">
     <meta name="description" content="三种绕过canary的方法">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>canary | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -421,51 +396,23 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <span id="more"></span>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>由于canary保护就是在距离EBP一定距离的栈帧中，用于验证是否程序有构造缓冲区的危险。而canary所在的位置一般也都在EBP-8的位置上存储着，因此 只要有机会泄露canary的位置，我们便有机会溢出程序</p>
+                <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>由于canary保护就是在距离EBP一定距离的栈帧中，用于验证是否程序有构造缓冲区的危险。而canary所在的位置一般也都在EBP-8的位置上存储着，因此 只要有机会泄露canary的位置，我们便有机会溢出程序</p>
 <h1 id="泄露方式"><a href="#泄露方式" class="headerlink" title="泄露方式"></a>泄露方式</h1><h2 id="覆盖00字节读取"><a href="#覆盖00字节读取" class="headerlink" title="覆盖00字节读取"></a>覆盖00字节读取</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>由于canary是在栈中的，而一般情况下为防止read、printf等函数直接读出canary的数据，canary都是以<code>\x00</code>为结尾设计的。这时我们可以利用换行符在将buf填充满之后会将<code>\x0a</code>覆盖至canary结尾的<code>\x00</code>覆上，这样就能顺利的读出canary的数据了，之后再将<code>cannary</code>-<code>\x0a</code>即可得到真实的canary的数据</p>
 <p><img src="/img/1643119852338.png"></p>
 <h3 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h3><ul>
-<li>存在<code>read</code>/<code>printf</code>等读出字符串的函数 </li>
-<li>可以两次栈溢出 </li>
-<li><ul>
-<li><strong>第一次是覆盖00字节，泄露canary</strong></li>
-<li><strong>第二次是利用canary进行攻击</strong></li>
-</ul>
-</li>
+<li>存在 &#x2F; 等读出字符串的函数</li>
+<li>可以两次栈溢出</li>
+<li><strong>第一次是覆盖00字节，泄露canary</strong><br><strong>第二次是利用canary进行攻击</strong></li>
 </ul>
 <h2 id="格式化字符串读取"><a href="#格式化字符串读取" class="headerlink" title="格式化字符串读取"></a>格式化字符串读取</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><p>利用格式化字符串漏洞的任意读</p>
 <p>由于canary的最低字节是0x00，所以不能用%s的格式当作字符串来读，而应该使用<code>%p</code>或者<code>%x</code>等当作一个数来读</p>
-<p>从栈的情况看，var_8(即canary的值)距离栈顶n个字节，n/8   =x，64位Linux前六个参数用寄存器传递，后面的才从栈上读取，所以要使var_8是printf函数的第x+7个参数，因此使用“(x+6)$p”作为printf参数可以泄露出canary的值。</p>
+<p>从栈的情况看，var_8(即canary的值)距离栈顶n个字节，n&#x2F;8   &#x3D;x，64位Linux前六个参数用寄存器传递，后面的才从栈上读取，所以要使var_8是printf函数的第x+7个参数，因此使用“(x+6)$p”作为printf参数可以泄露出canary的值。</p>
 <h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p><strong>存在格式化字符串漏洞</strong></p>
 <h3 id="知识点补充："><a href="#知识点补充：" class="headerlink" title="知识点补充："></a>知识点补充：</h3><p>%i$p是指打印出偏移format第i个参数的值</p>
 <h2 id="One-by-one-爆破猜解"><a href="#One-by-one-爆破猜解" class="headerlink" title="One by one 爆破猜解"></a>One by one 爆破猜解</h2><h3 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h3><p>对于canary，虽然每次进程重启后canary会不同，但是同一个进程中的不同线程的canary却是相同的，并且通过<strong>fork</strong>函数创建的子进程中的canary也是相同的，因为<strong>fork函数会直接拷贝父进程的内存</strong></p>
@@ -498,7 +445,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2021/12202f1c.html">https://Pr0b1em.github.io/2021/12202f1c.html</a>
+                    <a href="https://pr0b1em.github.io/2021/12202f1c.html">https://pr0b1em.github.io/2021/12202f1c.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -548,7 +495,7 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -703,12 +650,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -722,50 +669,10 @@
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -889,7 +796,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -923,8 +830,8 @@
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -969,7 +876,7 @@
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1224,8 +1131,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>

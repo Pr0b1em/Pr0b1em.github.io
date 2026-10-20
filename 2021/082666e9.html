@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="xjusec考核赛 writeup, Linux，二进制，IoT，CTF">
     <meta name="description" content="2021考核赛">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>xjusec考核赛 writeup | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -429,38 +404,15 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="xjusec考核赛wp"><a href="#xjusec考核赛wp" class="headerlink" title="xjusec考核赛wp"></a>xjusec考核赛wp</h1><h2 id="REVERSE："><a href="#REVERSE：" class="headerlink" title="REVERSE："></a>REVERSE：</h2><h3 id="justbase64"><a href="#justbase64" class="headerlink" title="justbase64"></a>justbase64</h3><p>这个题是以前看见过的一个类似的题，ida打开</p>
 <p><img src="/img/image-20210825211051630.png"></p>
-<p>这边目录看见encode_one,encode_two,encode_three三个编码，右边主函数里就是三次编码后形成的”EmBmP5Pmn7QcPU4gLYKv5QcMmB3PWHcP5YkPq3=cT6QckkPckoRG”，题目也有提示base64，但肯定不只有base64</p>
+<p>这边目录看见encode_one,encode_two,encode_three三个编码，右边主函数里就是三次编码后形成的”EmBmP5Pmn7QcPU4gLYKv5QcMmB3PWHcP5YkPq3&#x3D;cT6QckkPckoRG”，题目也有提示base64，但肯定不只有base64</p>
 <p>挨个看，在encode_one里面发现一个变量alphabet，肯定了base64的存在</p>
 <p><img src="/img/image-20210825211343129.png"></p>
 <p>encode_two里面关系一张图解释</p>
@@ -472,9 +424,9 @@
 <p><img src="/img/20200911131956308.png"></p>
 <p>要还原就从three开始倒过来还原</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">m</span><span class="token punctuation">(</span>v5<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> v5 <span class="token operator">&lt;=</span> <span class="token number">64</span> <span class="token keyword">or</span> v5 <span class="token operator">&gt;</span> <span class="token number">90</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> v5 <span class="token operator">&lt;=</span> <span class="token number">96</span> <span class="token keyword">or</span> v5 <span class="token operator">&gt;</span> <span class="token number">122</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> v5 <span class="token operator">&lt;=</span> <span class="token number">47</span> <span class="token keyword">or</span> v5 <span class="token operator">&gt;</span> <span class="token number">57</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> v5 <span class="token operator">&lt;=</span> <span class="token number">64</span> <span class="token keyword">or</span> v5 <span class="token operator">></span> <span class="token number">90</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> v5 <span class="token operator">&lt;=</span> <span class="token number">96</span> <span class="token keyword">or</span> v5 <span class="token operator">></span> <span class="token number">122</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> v5 <span class="token operator">&lt;=</span> <span class="token number">47</span> <span class="token keyword">or</span> v5 <span class="token operator">></span> <span class="token number">57</span><span class="token punctuation">:</span>
                 <span class="token keyword">return</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>v5<span class="token punctuation">)</span>
             <span class="token keyword">else</span><span class="token punctuation">:</span>
                 <span class="token keyword">return</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v5 <span class="token operator">-</span> <span class="token number">45</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token number">48</span><span class="token punctuation">)</span>
@@ -483,8 +435,7 @@
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v5 <span class="token operator">-</span> <span class="token number">62</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span> <span class="token operator">+</span> <span class="token number">65</span><span class="token punctuation">)</span>
 
-
-mm <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+mm <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     raw <span class="token operator">=</span> i
     fin <span class="token operator">=</span> m<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
@@ -498,8 +449,7 @@ fin2 <span class="token operator">=</span> <span class="token string">""</span>
     fin2 <span class="token operator">+=</span> mm<span class="token punctuation">[</span>c<span class="token punctuation">]</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>fin2<span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/img/image-20210825212900481.png"></p>
 <p>再还原two，最后base64解码得到flag</p>
@@ -515,12 +465,10 @@ raw<span class="token punctuation">[</span><span class="token number">39</span><
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>raw<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
 <h2 id="pwn："><a href="#pwn：" class="headerlink" title="pwn："></a>pwn：</h2><h3 id="ez-pwn（partial-overwrite-部分覆盖）"><a href="#ez-pwn（partial-overwrite-部分覆盖）" class="headerlink" title="ez_pwn（partial overwrite 部分覆盖）"></a>ez_pwn（partial overwrite 部分覆盖）</h3><p>这个题我觉得一点也不简单，在拿到hint之后才借助互联网的力量把他弄出来，过程艰辛</p>
 <p><img src="/img/image-20210825212508971.png"></p>
 <p><img src="/img/image-20210825214242973.png"></p>
-<p>一种比较新鲜的栈溢出，叫 <strong>花式栈溢出</strong> </p>
+<p>一种比较新鲜的栈溢出，叫 <strong>花式栈溢出</strong></p>
 <p>partial overwrite：在开启了PIE后，无论高位地址如何变化，低位地址是不变的，意味着有概率“撞到”正确的地址</p>
 <p><img src="/img/image-20210825213240232.png"></p>
 <p>主要的问题就是开启了canary，而栈溢出在第二次read函数里，有canary保护 ，read读满不会追加\0 。可以计算出第一次 read 需要的长度为 0x30 - 0x8 + 1 (+ 1 是为了覆盖 canary 的最低位为非 0 的值, printf 使用 %s 时, 遇到 \0 结束, 覆盖 canary 低位为非 0 值时, canary 就可以被 printf 打印出来了)</p>
@@ -543,8 +491,6 @@ raw<span class="token punctuation">[</span><span class="token number">39</span><
     io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
     io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
     io<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 
 <h3 id="mid-pwn"><a href="#mid-pwn" class="headerlink" title="mid_pwn"></a>mid_pwn</h3><p><img src="/img/image-20210825214846902.png"></p>
 <p>ida打开后，看见menu函数，五个功能</p>
@@ -622,10 +568,7 @@ system_addr<span class="token operator">=</span>free_addr<span class="token oper
 
 edit<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span>p64<span class="token punctuation">(</span>system_addr<span class="token punctuation">)</span><span class="token punctuation">)</span>
 delete<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-r<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+r<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto:"></a>Crypto:</h2><h3 id="tik-tak"><a href="#tik-tak" class="headerlink" title="tik-tak"></a>tik-tak</h3><p>根据提示键盘码，坐标轴那种，于是验证猜想，看到文档名称是tiktiktaktak，于是所有都回移一层，比如66该是第六行第二列，因为是两个6，但题目本身重叠，所以就该是第六行第一列，以此类推得出结果</p>
 <h2 id="MISC："><a href="#MISC：" class="headerlink" title="MISC："></a>MISC：</h2><h3 id="缩小查看更多"><a href="#缩小查看更多" class="headerlink" title="缩小查看更多"></a>缩小查看更多</h3><p>这个题，我的方法比较硬来，直接stegsolve打开，看照片层，隐约明显能看清</p>
@@ -659,17 +602,17 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token string">'-h'</span> <span class="token keyword">in</span> sys<span class="token punctuation">.</span>argv <span class="token keyword">or</span> <span class="token string">'--help'</span> <span class="token keyword">in</span> sys<span class="token punctuation">.</span>argv <span class="token keyword">or</span> <span class="token builtin">len</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'Usage: python bwm.py &lt;cmd&gt; [arg...] [opts...]'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'Usage: python bwm.py &lt;cmd> [arg...] [opts...]'</span><span class="token punctuation">)</span>
         <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'  cmds:'</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    encode &lt;image&gt; &lt;watermark&gt; &lt;image(encoded)&gt;'</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'           image + watermark -&gt; image(encoded)'</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    decode &lt;image&gt; &lt;image(encoded)&gt; &lt;watermark&gt;'</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'           image + image(encoded) -&gt; watermark'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    encode &lt;image> &lt;watermark> &lt;image(encoded)>'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'           image + watermark -> image(encoded)'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    decode &lt;image> &lt;image(encoded)> &lt;watermark>'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'           image + image(encoded) -> watermark'</span><span class="token punctuation">)</span>
         <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'  opts:'</span><span class="token punctuation">)</span>
         <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    --debug,          Show debug'</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    --seed &lt;int&gt;,     Manual setting random seed (default is 20160930)'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    --seed &lt;int>,     Manual setting random seed (default is 20160930)'</span><span class="token punctuation">)</span>
         <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    --oldseed         Use python2 random algorithm.'</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    --alpha &lt;float&gt;,  Manual setting alpha (default is 3.0)'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'    --alpha &lt;float>,  Manual setting alpha (default is 3.0)'</span><span class="token punctuation">)</span>
         sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     cmd <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
     <span class="token keyword">if</span> cmd <span class="token operator">!=</span> <span class="token string">'encode'</span> <span class="token keyword">and</span> cmd <span class="token operator">!=</span> <span class="token string">'decode'</span><span class="token punctuation">:</span>
@@ -681,7 +624,7 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
     <span class="token keyword">if</span> <span class="token string">'--seed'</span> <span class="token keyword">in</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">:</span>
         p <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">'--seed'</span><span class="token punctuation">)</span>
         <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'Missing &lt;int&gt; for --seed'</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'Missing &lt;int> for --seed'</span><span class="token punctuation">)</span>
             sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
         seed <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
         <span class="token keyword">del</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
@@ -692,7 +635,7 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
     <span class="token keyword">if</span> <span class="token string">'--alpha'</span> <span class="token keyword">in</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">:</span>
         p <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">'--alpha'</span><span class="token punctuation">)</span>
         <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'Missing &lt;float&gt; for --alpha'</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'Missing &lt;float> for --alpha'</span><span class="token punctuation">)</span>
             sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
         alpha <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
         <span class="token keyword">del</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span>p<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
@@ -715,7 +658,7 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
     <span class="token keyword">return</span> cv2<span class="token punctuation">.</span>merge<span class="token punctuation">(</span><span class="token punctuation">[</span>r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 <span class="token keyword">if</span> cmd <span class="token operator">==</span> <span class="token string">'encode'</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'image&lt;%s&gt; + watermark&lt;%s&gt; -&gt; image(encoded)&lt;%s&gt;'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>fn1<span class="token punctuation">,</span> fn2<span class="token punctuation">,</span> fn3<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'image&lt;%s> + watermark&lt;%s> -> image(encoded)&lt;%s>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>fn1<span class="token punctuation">,</span> fn2<span class="token punctuation">,</span> fn3<span class="token punctuation">)</span><span class="token punctuation">)</span>
     img <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span>fn1<span class="token punctuation">)</span>
     wm <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span>fn2<span class="token punctuation">)</span>
 
@@ -728,8 +671,8 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
     <span class="token comment"># print img.shape # 高, 宽, 通道</span>
     h<span class="token punctuation">,</span> w <span class="token operator">=</span> img<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> img<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
     hwm <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>h <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> img<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> hwm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> wm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">assert</span> hwm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> wm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">assert</span> hwm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">></span> wm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">assert</span> hwm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">></span> wm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
     hwm2 <span class="token operator">=</span> np<span class="token punctuation">.</span>copy<span class="token punctuation">(</span>hwm<span class="token punctuation">)</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>wm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>wm<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -809,7 +752,7 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
         plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">elif</span> cmd <span class="token operator">==</span> <span class="token string">'decode'</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'image&lt;%s&gt; + image(encoded)&lt;%s&gt; -&gt; watermark&lt;%s&gt;'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>fn1<span class="token punctuation">,</span> fn2<span class="token punctuation">,</span> fn3<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'image&lt;%s> + image(encoded)&lt;%s> -> watermark&lt;%s>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>fn1<span class="token punctuation">,</span> fn2<span class="token punctuation">,</span> fn3<span class="token punctuation">)</span><span class="token punctuation">)</span>
     img <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span>fn1<span class="token punctuation">)</span>
     img_wm <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span>fn2<span class="token punctuation">)</span>
 
@@ -864,7 +807,6 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
     <span class="token keyword">if</span> debug<span class="token punctuation">:</span>
         plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
                 
             </div>
             <hr/>
@@ -890,7 +832,7 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2021/082666e9.html">https://Pr0b1em.github.io/2021/082666e9.html</a>
+                    <a href="https://pr0b1em.github.io/2021/082666e9.html">https://pr0b1em.github.io/2021/082666e9.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -948,7 +890,7 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -1122,50 +1064,10 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1289,7 +1191,7 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -1323,8 +1225,8 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -1369,7 +1271,7 @@ alpha <span class="token operator">=</span> <span class="token number">3.0</span
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1624,8 +1526,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>

